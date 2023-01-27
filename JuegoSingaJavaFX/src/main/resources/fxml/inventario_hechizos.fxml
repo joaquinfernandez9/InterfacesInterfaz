@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fxml.InventarioHechizos"
+            prefHeight="720.0" prefWidth="1280.0">
+    <children>
+        <TableView layoutX="186.0" layoutY="138.0" prefHeight="200.0" prefWidth="307.0">
+            <columns>
+                <TableColumn prefWidth="100.0" text="Nombre" />
+                <TableColumn prefWidth="99.0" text="Coste" />
+                <TableColumn prefWidth="107.0" text="Tipo" />
+            </columns>
+        </TableView>
+        <TableView layoutX="710.0" layoutY="138.0" prefHeight="200.0" prefWidth="354.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="Nombre" />
+                <TableColumn prefWidth="64.0" text="Nivel" />
+                <TableColumn prefWidth="85.0" text="Tipo" />
+                <TableColumn prefWidth="129.0" text="Coste de Mejora" />
+            </columns>
+        </TableView>
+        <Button layoutX="787.0" layoutY="505.0" mnemonicParsing="false" text="Mejorar" />
+        <Button layoutX="236.0" layoutY="505.0" mnemonicParsing="false" text="Aprender" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,12 @@
+.helloView {
+    -fx-background-image:url('../img/mazmorra_fondo.jpg');
+    -fx-background-size: 100% 100%;
+}
+.casaMagu {
+    -fx-background-image:url('../img/casa_magu.jpg');
+    -fx-background-size: 100% 100%;
+}
+.mamorra {
+    -fx-background-image:url('../img/mamorra.jpg');
+    -fx-background-size: 100% 100%;
+}
