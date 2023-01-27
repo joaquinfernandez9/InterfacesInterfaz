@@ -1,0 +1,19 @@
+casa del mago: 
+	Almacen de objetos menu a medias
+	aprender hechizos menu a medias
+	falta boton salir casa (en la puerta)
+	editar labels
+
+mazmorra: 
+	labels en condiciones
+	log no editables
+	aparicion y desapariocion de botones y labels (si hay enemigos tatta)
+	poner texto en botones para cambiar habitacion
+	tiempo
+	INVENTARIO MAGO
+
+
+	
+MENU 	
+PAUSA: alert de dos opciones solo con una que pare el tiempo cuando le das
+volver al menu principal, guardar, salir
