@@ -1,8 +1,7 @@
 package ui.common;
 
 public enum Screens {
-    LOGIN("/fxml/login.fxml"),
-    MENU("/fxml/hello-view.fxml"),
+    PANTALLA_CARGA("/fxml/hello-view.fxml"),
     CASA_MAGO("/fxml/casa_mago.fxml"),
     MAZMORRA("/fxml/mazmorra.fxml"),;
 

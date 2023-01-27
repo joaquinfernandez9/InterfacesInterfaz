@@ -70,13 +70,13 @@ public class PrincipalController {
     public void onLoginDone(String user) {
         actualUser = user;
         menu.setVisible(true);
-        cargarPantalla(Screens.MENU);
+        cargarPantalla(Screens.PANTALLA_CARGA);
     }
 
 
     public void initialize() {
         menu.setVisible(false);
-        cargarPantalla(Screens.MENU);
+        cargarPantalla(Screens.PANTALLA_CARGA);
     }
 
     private void closeWindowEvent(WindowEvent event) {
@@ -108,12 +108,4 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    public void backToLogin() {
-        menu.setVisible(false);
-        cargarPantalla(Screens.LOGIN);
-    }
-
-    public void backToWelcome() {
-        cargarPantalla(Screens.MENU);
-    }
 }
