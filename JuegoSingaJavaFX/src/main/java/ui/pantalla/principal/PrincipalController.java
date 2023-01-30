@@ -35,7 +35,6 @@ public class PrincipalController {
 
     Instance<Object> instance;
 
-    public String actualUser;
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
@@ -67,16 +66,9 @@ public class PrincipalController {
     }
 
 
-    public void onLoginDone(String user) {
-        actualUser = user;
-        menu.setVisible(true);
-        cargarPantalla(Screens.PANTALLA_CARGA);
-    }
-
-
     public void initialize() {
         menu.setVisible(false);
-        cargarPantalla(Screens.PANTALLA_CARGA);
+        cargarPantalla(Screens.MAZMORRA);
     }
 
     private void closeWindowEvent(WindowEvent event) {

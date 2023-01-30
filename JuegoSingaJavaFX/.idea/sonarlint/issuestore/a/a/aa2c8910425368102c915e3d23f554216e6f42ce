@@ -1,12 +1,0 @@
-
-[	java:S107!"AConstructor has 8 parameters, which is greater than 7 authorized.(ò ì¤ùÿÿÿÿ
-\
-java:S6201S"FReplace this instanceof check and cast with 'instanceof Attack attack'(«ÑË„
-P
-java:S1161X":Add the "@Override" annotation above this method signature(ç¼êè
-a
-java:S6201Y"FReplace this instanceof check and cast with 'instanceof Attack attack'(¦‡š¼ùÿÿÿÿ
-2
-java:S1116i"Remove this empty statement.(¹õ´¿
-d
-java:S1128"NRemove this unused import 'game.character.exceptions.WizardNoWeaponException'.(½äª´
