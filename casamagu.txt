@@ -17,4 +17,4 @@ mazmorra:
 	
 MENU 	
 PAUSA: alert de dos opciones solo con una que pare el tiempo cuando le das
-volver al menu principal, guardar, salir
+volver al menu principal, guardar, salir fgdfghdgdgh

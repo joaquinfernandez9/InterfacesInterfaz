@@ -37,6 +37,10 @@ public class PrincipalController {
 
     public String actualUser;
 
+    public void setMenuHelp(String text) {
+        menuHelp.setText(text);
+    }
+
     @Inject
     public PrincipalController(Instance<Object> instance) {
         this.instance = instance;
@@ -70,7 +74,7 @@ public class PrincipalController {
     public void onLoginDone(String user) {
         actualUser = user;
         menu.setVisible(true);
-        cargarPantalla(Screens.MENU);
+        cargarPantalla(Screens.PANTALLA_CARGA);
     }
 
 
@@ -108,12 +112,5 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    public void backToLogin() {
-        menu.setVisible(false);
-        cargarPantalla(Screens.LOGIN);
-    }
-
-    public void backToWelcome() {
-        cargarPantalla(Screens.MENU);
-    }
+   
 }
