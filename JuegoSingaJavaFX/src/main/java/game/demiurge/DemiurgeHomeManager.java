@@ -46,6 +46,7 @@ public class DemiurgeHomeManager {
 
     public void enterHome(){ containerManager.setSite(home.getContainer()); }
 
+    //dormir?
     public void recover(int points) throws HomeNotEnoughSingaException, WizardTiredException, ValueOverMaxException {
         if (points * dc.getSingaPerLifePointCost() > home.getSinga()) {
             throw new HomeNotEnoughSingaException();
@@ -60,6 +61,7 @@ public class DemiurgeHomeManager {
         home.mergeCrystal((SingaCrystal) wizard.getCrystalCarrier().remove(position));
         wizard.drainEnergy(dc.getBasicEnergyConsumption());
     }
+
 
     public void upgradeLifeMax() throws HomeNotEnoughSingaException, WizardNotEnoughEnergyException, WizardTiredException {
         if (wizard.getLifeMax() * dc.getBasicUpgradeCost() > home.getSinga()) {
@@ -85,6 +87,8 @@ public class DemiurgeHomeManager {
         }
     }
 
+
+    //mejorar confort
     public void upgradeComfort() throws HomeNotEnoughSingaException, WizardNotEnoughEnergyException, WizardTiredException {
         if (home.getComfort() * dc.getComfortUpgradeCost() > home.getSinga()) {
             throw new HomeNotEnoughSingaException();
@@ -97,6 +101,7 @@ public class DemiurgeHomeManager {
         }
     }
 
+//    mejorar singa
     public void upgradeSingaMax() throws HomeNotEnoughSingaException, WizardNotEnoughEnergyException, WizardTiredException {
         if (home.getMaxSinga() > home.getSinga()) {
             throw new HomeNotEnoughSingaException();
@@ -110,6 +115,8 @@ public class DemiurgeHomeManager {
     }
 
     public Knowledge getMemory() { return wizard.getMemory(); }
+
+
     public void improveSpell(int option) throws ValueOverMaxException, WizardTiredException, HomeNotEnoughSingaException, WizardNotEnoughEnergyException {
         Spell spell = wizard.getSpell(option);
         int nextLevel = spell.getLevel()+dc.getBasicIncrease();
@@ -126,6 +133,8 @@ public class DemiurgeHomeManager {
     }
 
     public Knowledge getLibrary() { return home.getLibrary(); }
+
+    //aprender hechizo
     public void learnSpell(int option) throws HomeNotEnoughSingaException, WizardNotEnoughEnergyException, WizardTiredException, WizardSpellKnownException {
         Spell spell = home.getSpell(option);
 

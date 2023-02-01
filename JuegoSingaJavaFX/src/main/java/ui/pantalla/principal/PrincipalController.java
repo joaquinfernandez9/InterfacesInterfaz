@@ -76,7 +76,7 @@ public class PrincipalController {
 
     public void initialize() {
         menu.setVisible(false);
-        cargarPantalla(Screens.MENU);
+        cargarPantalla(Screens.CASA_MAGO);
     }
 
     private void closeWindowEvent(WindowEvent event) {

@@ -7,6 +7,7 @@ module JuegoSingaJavaFx {
     requires org.apache.logging.log4j;
 
     exports ui.main;
+
     exports ui.common;
     exports ui.pantalla.principal;
     exports game.objectContainer.exceptions;
@@ -27,6 +28,7 @@ module JuegoSingaJavaFx {
 
 
     opens ui.main;
+    opens ui.pantalla.casaMago;
     opens ui.pantalla.menu;
     opens ui.common;
     opens ui.pantalla.principal;
