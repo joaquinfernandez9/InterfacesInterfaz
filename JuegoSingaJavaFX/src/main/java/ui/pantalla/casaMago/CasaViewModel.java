@@ -18,14 +18,13 @@ public class CasaViewModel {
     //aprender hechizos -> learnSpell
 
 
-    private final DemiurgeHomeManager demiurgeHomeManager;
     private final Demiurge demiurge;
     private final ObjectProperty<CasaState> state;
+    DemiurgeHomeManager demiurgeHomeManager = new DemiurgeHomeManager();
 
     @Inject
-    public CasaViewModel(DemiurgeHomeManager demiurgeHomeManager, Demiurge demiurge) {
+    public CasaViewModel(Demiurge demiurge) {
         this.demiurge = demiurge;
-        this.demiurgeHomeManager = demiurgeHomeManager;
         this.state = new SimpleObjectProperty<>(
                 new CasaState(null, demiurgeHomeManager.homeInfo(), /*demiurgeHomeManager.homeInfo(),*/ false));
     }

@@ -1,5 +1,8 @@
 package ui.pantalla.principal;
 
+import game.DungeonLoader;
+import game.demiurge.Demiurge;
+import game.demiurge.DungeonConfiguration;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
@@ -12,12 +15,14 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lombok.extern.log4j.Log4j2;
 import ui.common.BaseScreenController;
 import ui.common.Screens;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -34,6 +39,8 @@ public class PrincipalController {
     private MenuItem menuHelp;
 
     Instance<Object> instance;
+    private Demiurge demiurge;
+    private DungeonConfiguration dungeonConfiguration;
 
     public String actualUser;
 
@@ -66,13 +73,21 @@ public class PrincipalController {
         root.setCenter(pantallaNueva);
     }
 
-
-    public void onLoginDone(String user) {
-        actualUser = user;
-        menu.setVisible(true);
-        cargarPantalla(Screens.MENU);
+    public void loadXMLFile() {
+        try {
+            //Load file from disk
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Resource File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("XML Files", "*.xml"));
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
+            if (selectedFile != null) {
+                loadEnviranment(selectedFile);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
-
 
     public void initialize() {
         menu.setVisible(false);
@@ -108,12 +123,14 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    public void backToLogin() {
-        menu.setVisible(false);
-        cargarPantalla(Screens.LOGIN);
+
+    private void loadEnviranment(File selectedFile) {
+        demiurge.loadEnvironment(new DungeonLoader() {
+            @Override
+            public void load(Demiurge demiurge, DungeonConfiguration dungeonConfiguration) {
+                //metodo load xml
+            }
+        });
     }
 
-    public void backToWelcome() {
-        cargarPantalla(Screens.MENU);
-    }
 }
