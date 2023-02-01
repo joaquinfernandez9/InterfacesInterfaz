@@ -4,7 +4,6 @@ casa del mago:
 	falta boton salir casa (en la puerta)
 	editar labels
 	// falta lista de hechizos (hacer el getLibrary y mostrar en tabla)
-	dormir metodo no ta
 
 mazmorra: 
 	labels en condiciones
