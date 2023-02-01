@@ -12,6 +12,14 @@
                   <MenuItem mnemonicParsing="false" text="About" />
                </items>
             </Menu>
+            <Menu fx:id="menuPausa" mnemonicParsing="false" text="Opciones">
+                <items>
+                    <MenuItem fx:id="menuPausaPausar" onAction="#pausar" mnemonicParsing="false" text="Pausar" />
+                    <MenuItem fx:id="menuPausaGuardar" onAction="#guardar" mnemonicParsing="false" text="Guardar" />
+                    <MenuItem fx:id="menuPausaSalir" onAction="#salir" mnemonicParsing="false" text="Salir" />
+                    <MenuItem fx:id="menuPausaMenuPrincipal" onAction="#menuPrincipal" mnemonicParsing="false" text="Menu Principal" />
+                </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
