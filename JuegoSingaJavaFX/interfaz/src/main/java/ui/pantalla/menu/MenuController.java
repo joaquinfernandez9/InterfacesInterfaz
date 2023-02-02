@@ -9,6 +9,7 @@ public class MenuController extends BaseScreenController {
 
     @FXML
     public void newGame(ActionEvent actionEvent) {
+        getPrincipalController().loadXMLFile();
         getPrincipalController().cargarPantalla(Screens.CASA_MAGO);
     }
 

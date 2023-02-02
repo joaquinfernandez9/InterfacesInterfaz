@@ -10,3 +10,9 @@
     -fx-background-image:url('../img/mamorra.jpg');
     -fx-background-size: 100% 100%;
 }
+
+.view {
+/*    transparent background*/
+    -fx-background-color: rgba(0, 0, 0, 0);
+
+}

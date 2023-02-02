@@ -11,6 +11,7 @@ public class CasaState {
 //    private Site sitio;
     private boolean isCambio;
 
+
     public CasaState(String mensaje, String casa, boolean isCambio) {
         this.mensaje = mensaje;
         this.casa = casa;

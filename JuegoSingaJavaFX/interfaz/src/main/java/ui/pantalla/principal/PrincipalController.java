@@ -48,8 +48,8 @@ public class PrincipalController {
     public final Demiurge demiurge = new Demiurge();
     public final DungeonConfiguration dungeonConfiguration = new DungeonConfiguration();
     private final DungeonLoaderXML dungeonLoaderXML = new DungeonLoaderManualXML();
-    public String actualUser;
-    public Timer actualTime;
+
+
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
@@ -81,22 +81,6 @@ public class PrincipalController {
         root.setCenter(pantallaNueva);
     }
 
-    public void loadXMLFile() {
-        try {
-            //Load file from disk
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Open Resource File");
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("XML Files", "*.xml"));
-            File selectedFile = fileChooser.showOpenDialog(primaryStage);
-            if (selectedFile != null) {
-                loadEnviranment(selectedFile);
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-    }
-
     public void initialize() {
         menu.setVisible(true);
         cargarPantalla(Screens.PANTALLA_CARGA);
@@ -111,7 +95,6 @@ public class PrincipalController {
         alert.setContentText("Close without saving?");
         alert.initOwner(primaryStage.getOwner());
         Optional<ButtonType> res = alert.showAndWait();
-
 
         res.ifPresent(buttonType -> {
             if (buttonType == ButtonType.CANCEL) {
@@ -131,6 +114,23 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
+    public void loadXMLFile() {
+        try {
+            //Load file from disk
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Resource File");
+            //C:\Users\joaqu\Documents\GitHub\InterfacesInterfaz\JuegoSingaJavaFX\XML\src\main\resources
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("XML Files", "*.xml"));
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
+            if (selectedFile != null) {
+                loadEnvironment(selectedFile);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
 
     private void loadEnvironment(File selectedFile) {
         demiurge.loadEnvironment((demiurgeCosas, dungeonConfig) -> {
@@ -144,7 +144,7 @@ public class PrincipalController {
     }
 
     //hay q cambiarlo para q ponga la ruta q quiera
-    public void guardar() {
+    public void guardar() throws IOException {
         dungeonLoaderXML.save(demiurge, dungeonConfiguration, new File("src/main/resources/dungeon.xml"));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Guardar");
@@ -182,13 +182,6 @@ public class PrincipalController {
         return dungeonConfiguration;
     }
 
-    public void startTimer() {
-        this.actualTime = new Timer();
-    }
-
-    public void pauseTimer() {
-        this.actualTime.cancel();
-    }
 
 
 }
