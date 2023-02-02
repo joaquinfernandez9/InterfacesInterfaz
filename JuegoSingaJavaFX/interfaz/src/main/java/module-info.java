@@ -7,6 +7,7 @@ module interfaz {
     requires JuegoSingaJavaFx;
     requires lombok;
     requires org.apache.logging.log4j;
+    requires $MODULE_NAME$;
 
     exports ui.main;
     exports ui.common;
@@ -15,6 +16,7 @@ module interfaz {
     exports ui.pantalla.casaMago;
     exports ui.pantalla.menu;
     exports ui.pantalla.mazmorra;
+
 
     opens ui.main;
     opens ui.pantalla.casaMago;

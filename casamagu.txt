@@ -7,7 +7,6 @@ casa del mago:
 
 mazmorra: 
 	labels en condiciones
-	log no editables
 	aparicion y desapariocion de botones y labels (si hay enemigos tatta)
 	poner texto en botones para cambiar habitacion
 	tiempo

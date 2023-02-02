@@ -15,6 +15,7 @@ import game.spell.*;
 import game.spellContainer.Knowledge;
 import game.spellContainer.Library;
 import game.util.ValueOverMaxException;
+import jakarta.inject.Inject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -70,6 +71,7 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     static int MAX_WEAPONS = 1;
     static int MAX_NECKLACES = 1;
     static int MAX_RINGS = 2;
+
 
     @Override
     public void load(Demiurge demiurge, DungeonConfiguration dungeonConfiguration, File xmlFile) throws Exception, SpellUnknowableException, ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException, ValueOverMaxException {

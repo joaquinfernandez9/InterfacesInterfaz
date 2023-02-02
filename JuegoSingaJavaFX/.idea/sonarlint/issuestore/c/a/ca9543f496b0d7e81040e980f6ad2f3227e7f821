@@ -1,0 +1,21 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÌØÞ¯
+\
+java:S1659"FDeclare "necklaces" and all following declarations on a separate line.(ñ÷˜Å
+U
+java:S1161":Add the "@Override" annotation above this method signature(¤ªÿ¸ùÿÿÿÿ
+a
+java:S6201"FReplace this instanceof check and cast with 'instanceof Weapon weapon'(›Þóöþÿÿÿÿ
+e
+java:S6201"JReplace this instanceof check and cast with 'instanceof Necklace necklace'(ß°šòüÿÿÿÿ
+X
+java:S6201 "BReplace this instanceof check and cast with 'instanceof Ring ring'(›Û°„
+P
+java:S1161'":Add the "@Override" annotation above this method signature(ôËè¶
+\
+java:S6201V"FReplace this instanceof check and cast with 'instanceof Weapon weapon'(õîœË
+U
+java:S6201^"?Replace this instanceof check and cast with 'instanceof Ring r'(Ü²ÏŽ
+d
+java:S1128
+"NRemove this unused import 'game.character.exceptions.WizardNoWeaponException'.(½äª´

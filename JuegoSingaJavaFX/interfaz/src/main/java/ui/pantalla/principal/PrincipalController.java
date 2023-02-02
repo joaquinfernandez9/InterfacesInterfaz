@@ -1,8 +1,12 @@
 package ui.pantalla.principal;
 
-import game.DungeonLoader;
 import game.demiurge.Demiurge;
 import game.demiurge.DungeonConfiguration;
+import game.object.ItemCreationErrorException;
+import game.objectContainer.exceptions.ContainerFullException;
+import game.objectContainer.exceptions.ContainerUnacceptedItemException;
+import game.spell.SpellUnknowableException;
+import game.util.ValueOverMaxException;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
@@ -18,13 +22,15 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import loaderManualXML.DungeonLoaderManualXML;
+import loaderManualXML.DungeonLoaderXML;
 import lombok.extern.log4j.Log4j2;
 import ui.common.BaseScreenController;
 import ui.common.Screens;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Timer;
 
 @Log4j2
 public class PrincipalController {
@@ -39,14 +45,16 @@ public class PrincipalController {
     private MenuItem menuHelp;
 
     Instance<Object> instance;
-    private Demiurge demiurge;
-    private DungeonConfiguration dungeonConfiguration;
-
+    public final Demiurge demiurge = new Demiurge();
+    public final DungeonConfiguration dungeonConfiguration = new DungeonConfiguration();
+    private final DungeonLoaderXML dungeonLoaderXML = new DungeonLoaderManualXML();
     public String actualUser;
+    public Timer actualTime;
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
         this.instance = instance;
+
     }
 
     public void cargarPantalla(Screens pantalla) {
@@ -91,7 +99,7 @@ public class PrincipalController {
 
     public void initialize() {
         menu.setVisible(true);
-        cargarPantalla(Screens.CASA_MAGO);
+        cargarPantalla(Screens.PANTALLA_CARGA);
     }
 
     private void closeWindowEvent(WindowEvent event) {
@@ -112,7 +120,7 @@ public class PrincipalController {
         });
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit() {
         primaryStage.close();
         Platform.exit();
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
@@ -124,16 +132,20 @@ public class PrincipalController {
     }
 
 
-    private void loadEnviranment(File selectedFile) {
-        demiurge.loadEnvironment(new DungeonLoader() {
-            @Override
-            public void load(Demiurge demiurge, DungeonConfiguration dungeonConfiguration) {
-                //metodo load xml
+    private void loadEnvironment(File selectedFile) {
+        demiurge.loadEnvironment((demiurgeCosas, dungeonConfig) -> {
+            try {
+                dungeonLoaderXML.load(demiurge, dungeonConfiguration, selectedFile);
+            } catch (ItemCreationErrorException | ContainerFullException | ContainerUnacceptedItemException |
+                     ValueOverMaxException | SpellUnknowableException | Exception e) {
+                log.error(e.getMessage(), e);
             }
         });
     }
 
-    public void guardar(ActionEvent actionEvent) {
+    //hay q cambiarlo para q ponga la ruta q quiera
+    public void guardar() {
+        dungeonLoaderXML.save(demiurge, dungeonConfiguration, new File("src/main/resources/dungeon.xml"));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Guardar");
         alert.setHeaderText("Guardar");
@@ -159,7 +171,24 @@ public class PrincipalController {
     }
 
     public void menuPrincipal(ActionEvent actionEvent) {
-        cargarPantalla(Screens.PANTALLA_CARGA);
+        cargarPantalla(Screens.CASA_MAGO);
     }
+
+    public Demiurge getDemiurge() {
+        return demiurge;
+    }
+
+    public DungeonConfiguration getDungeonConfiguration() {
+        return dungeonConfiguration;
+    }
+
+    public void startTimer() {
+        this.actualTime = new Timer();
+    }
+
+    public void pauseTimer() {
+        this.actualTime.cancel();
+    }
+
 
 }

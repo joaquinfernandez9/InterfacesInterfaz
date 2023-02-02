@@ -17,6 +17,9 @@ module JuegoSingaJavaFx {
     exports game.spell;
     exports game.spellContainer;
     exports game.util;
+    exports game.actions;
     exports game;
     exports console;
+    exports game.objectContainer;
+    exports game.character;
 }
