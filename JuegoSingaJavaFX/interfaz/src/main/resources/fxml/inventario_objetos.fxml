@@ -3,13 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantalla.almacen.AlmacenController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantalla.almacen.AlmacenController">
     <children>
-        <ListView fx:id="items_mago" layoutX="200.0" layoutY="140.0" prefHeight="411.0" prefWidth="362.0"/>
-        <ListView fx:id="items_almacen" layoutX="703.0" layoutY="140.0" prefHeight="411.0" prefWidth="362.0"/>
-        <Button onAction="#moverInventario" layoutX="825.0" layoutY="579.0" mnemonicParsing="false" text="Mover al inventario"/>
-        <Button onAction="#soltar" layoutX="617.0" layoutY="348.0" mnemonicParsing="false" text="Soltar"/>
-        <Button onAction="#moverAlmacen" layoutX="322.0" layoutY="579.0" mnemonicParsing="false" text="Mover al almacen"/>
+        <ListView fx:id="items_mago" layoutX="200.0" layoutY="140.0" prefHeight="154.0" prefWidth="362.0" />
+        <ListView fx:id="items_almacen" layoutX="703.0" layoutY="140.0" prefHeight="410.0" prefWidth="362.0" />
+        <Button layoutX="825.0" layoutY="579.0" mnemonicParsing="false" onAction="#moverInventario" text="Mover al inventario" />
+        <Button layoutX="617.0" layoutY="348.0" mnemonicParsing="false" onAction="#soltar" text="Soltar" />
+        <Button layoutX="322.0" layoutY="579.0" mnemonicParsing="false" onAction="#moverAlmacen" text="Mover al almacen" />
+      <ListView fx:id="jew_bag" layoutX="200.0" layoutY="397.0" prefHeight="154.0" prefWidth="362.0" />
+      <Label layoutX="367.0" layoutY="110.0" text="Weareables" />
+      <Label layoutX="357.0" layoutY="340.0" text="Jewelry Bag" />
     </children>
 </AnchorPane>

@@ -37,9 +37,9 @@ public class CasaMagoController extends BaseScreenController {
     public void principalCargado() {
         super.principalCargado();
         cristales.setText("Cristales "+getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().size());
-        vida.setText("Vida "+getPrincipalController().getDemiurge().getWizard().getLife());
+        vida.setText("Vida "+getPrincipalController().getDemiurge().getWizard().getLife() + "/" + getPrincipalController().getDemiurge().getWizard().getLifeMax());
         energia.setText("Energia "+getPrincipalController().getDemiurge().getWizard().getEnergy());
-        singa.setText("Singa "+getPrincipalController().getDemiurge().getHomeManager().getSinga());
+        singa.setText("Singa "+getPrincipalController().getDemiurge().getHomeManager().getSinga() + "/" + getPrincipalController().getDemiurge().getHomeManager().getSingaSpace());
         dia.setText("Dia "+getPrincipalController().getDemiurge().getDay());
 
         listaHechizos.getItems().clear();
