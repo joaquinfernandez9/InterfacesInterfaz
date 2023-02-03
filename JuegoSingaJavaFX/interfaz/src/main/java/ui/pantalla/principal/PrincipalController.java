@@ -30,10 +30,44 @@ import ui.common.Screens;
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.Timer;
 
 @Log4j2
 public class PrincipalController {
+
+    /*
+    -TEXTO
+        Requisitos pendientes y hechos lo hace Sergio
+        Manual de instalacion
+        Como instalar base de datos y eso, pillarlo de bea en word comun
+        Control de versiones y como se ha hecho
+
+    -mazmorra{
+        barral pon lo que falta
+        claro, manin miloco
+        - ataques, tanto fisico como hechizos, puede ser un alert con creacion de botones con forEach (leer lista hechizos conocidos por el mago y que salgan x botones con el nombre de cada hechizo)
+        - inventario; equipar, desequipar, guardar y dropear objetos (tabla y 4 botones)
+        - informacion del mago (tabla)
+        - recoger cristales
+
+
+        public class Room extends Site {
+            private Creature creature = null;
+        si criatura es diferente de null vemos que Hacer
+
+        LO DE SI HAY CRIATURA EN LA SALA LO NECESITAMOS SABER  PARA ESTO:
+        - si en la habitacion no hay enemigos, no se mostrara el alert donde salen los distintos ataques, saldrá un alert que indique que no hay nada a lo que atacar
+        - si hay enemigos, no se podrá recoger cristales u objetos solo se podra atacar o huir
+
+    }
+    -almacen objetos {
+        boton volver a casa mago
+        cargar objetos (tablas)
+        pasar objetos de almacen a inventario
+        pasar objetos de inventario a almacen
+        boton dropear del almacen y del inventario
+    }
+  */
+
     @FXML
     private MenuBar menu;
     @FXML
@@ -79,6 +113,7 @@ public class PrincipalController {
 
     private void cambioPantalla(Pane pantallaNueva) {
         root.setCenter(pantallaNueva);
+
     }
 
     public void initialize() {

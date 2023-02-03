@@ -87,7 +87,7 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 //        final File XMLFILE = new File("xml/dungeon-V.02.xml");
         final File XSDFILE = new File("xml/dungeon_schema.xsd");
 
-        validateAgainstSchema(xmlFile, XSDFILE);
+//        validateAgainstSchema(xmlFile, XSDFILE);
 
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

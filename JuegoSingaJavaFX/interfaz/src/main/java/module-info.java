@@ -16,9 +16,11 @@ module interfaz {
     exports ui.pantalla.casaMago;
     exports ui.pantalla.menu;
     exports ui.pantalla.mazmorra;
+    exports ui.pantalla.almacen;
 
 
     opens ui.main;
+    opens ui.pantalla.almacen;
     opens ui.pantalla.casaMago;
     opens ui.pantalla.menu;
     opens ui.common;

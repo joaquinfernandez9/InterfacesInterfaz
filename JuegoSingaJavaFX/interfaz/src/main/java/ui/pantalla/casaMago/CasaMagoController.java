@@ -7,6 +7,7 @@ import game.demiurge.Demiurge;
 import game.dungeon.HomeNotEnoughSingaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ui.common.BaseScreenController;
@@ -50,32 +51,89 @@ public class CasaMagoController extends BaseScreenController {
     }
 
     @FXML
-    private void abrirAlmacen(ActionEvent actionEvent) {
+    private void abrirAlmacen() {
         getPrincipalController().cargarPantalla(Screens.ALMACEN);
     }
 
     @FXML
-    private  void mejorarAlmacen(ActionEvent actionEvent) throws WizardTiredException, WizardNotEnoughEnergyException, HomeNotEnoughSingaException {
-        getPrincipalController().getDemiurge().getHomeManager().upgradeSingaMax();
+    private  void mejorarAlmacen() {
+        try {
+            getPrincipalController().getDemiurge().getHomeManager().upgradeSingaMax();
+            principalCargado();
+
+        }catch (WizardTiredException| WizardNotEnoughEnergyException | HomeNotEnoughSingaException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Mejorar Almacen");
+            alert.setHeaderText("No se puede mejorar el almacen");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
-    private  void mejorarConfort(ActionEvent actionEvent) throws WizardTiredException, WizardNotEnoughEnergyException, HomeNotEnoughSingaException {
-        getPrincipalController().getDemiurge().getHomeManager().upgradeComfort();
+    private  void mejorarConfort() {
+        try {
+            getPrincipalController().getDemiurge().getHomeManager().upgradeComfort();
+            principalCargado();
+
+        } catch (WizardTiredException | WizardNotEnoughEnergyException | HomeNotEnoughSingaException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Mejorar Confort");
+            alert.setHeaderText("No se puede mejorar el confort");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    private  void aprenderHechizo(ActionEvent actionEvent) throws WizardTiredException, WizardSpellKnownException, WizardNotEnoughEnergyException, HomeNotEnoughSingaException {
+    private  void aprenderHechizo() {
         int index = listaHechizos.getSelectionModel().getSelectedIndex();
-        getPrincipalController().getDemiurge().getHomeManager().learnSpell(index);
-        System.out.println("dormio");
+
+        try {
+            if (index != -1) {
+                getPrincipalController().getDemiurge().getHomeManager().learnSpell(index);
+                System.out.println("dormio");
+                principalCargado();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Aprender Hechizo");
+                alert.setHeaderText("No se puede aprender el hechizo");
+                alert.setContentText("No se ha seleccionado ningun hechizo");
+                alert.showAndWait();
+            }
+
+        } catch (WizardTiredException | WizardSpellKnownException | WizardNotEnoughEnergyException | HomeNotEnoughSingaException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Aprender Hechizo");
+            alert.setHeaderText("No se puede aprender el hechizo");
+            if(e instanceof WizardSpellKnownException) {
+                alert.setContentText("Ya sabes el hechizo");
+            } else if (e instanceof WizardTiredException) {
+                alert.setContentText("Estas muy cansado");
+            } else if (e instanceof WizardNotEnoughEnergyException) {
+                alert.setContentText(e.getMessage());
+            } else if (e instanceof HomeNotEnoughSingaException) {
+                alert.setContentText(e.getMessage());
+            }
+            alert.showAndWait();
+        }
     }
 
     @FXML
     private  void zzz() {
         getPrincipalController().getDemiurge().nextDay();
-        System.out.println("dormio");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dormir");
+        alert.setHeaderText("Estás durmiendo");
+        alert.setContentText("Estás durmiendo");
+        alert.showAndWait();
         principalCargado();
+    }
+
+    @FXML
+    private void irMazmorra() {
+        getPrincipalController().cargarPantalla(Screens.MAZMORRA);
     }
 }
 
