@@ -1,6 +1,7 @@
 package ui.pantalla.almacen;
 
 import game.objectContainer.Container;
+import game.objectContainer.Wearables;
 import game.objectContainer.exceptions.ContainerFullException;
 import game.objectContainer.exceptions.ContainerUnacceptedItemException;
 import javafx.event.ActionEvent;
@@ -40,7 +41,7 @@ public class AlmacenController extends BaseScreenController {
         }
 
         jew_bag.getItems().clear();
-        while (inv_mago.hasNext()){
+        while (inv_mago.hasNext()) {
             jew_bag.getItems().add(inv_mago.next().toString());
         }
 
@@ -61,7 +62,7 @@ public class AlmacenController extends BaseScreenController {
                 Container a = getPrincipalController().getDemiurge().getWizard().getJewelryBag();
                 Container b = getPrincipalController().getDemiurge().getHome().getContainer();
                 getPrincipalController().getDemiurge().getContainerManager().addItem(a, jew_bag.getSelectionModel().getSelectedIndex(), b);
-            }else {
+            } else {
                 alert.setHeaderText("No se ha seleccionado ningun item");
                 alert.showAndWait();
             }
@@ -97,6 +98,7 @@ public class AlmacenController extends BaseScreenController {
         principalCargado();
     }
 
+
     @FXML
     private void moverInventario() {
         // de almacen -> inventario
@@ -105,7 +107,13 @@ public class AlmacenController extends BaseScreenController {
                 //a la jewelry bag
                 Container a = getPrincipalController().getDemiurge().getHome().getContainer();
                 Container b = getPrincipalController().getDemiurge().getWizard().getJewelryBag();
-                getPrincipalController().getDemiurge().getContainerManager().addItem(a, items_almacen.getSelectionModel().getSelectedIndex(), b);
+                Container c = getPrincipalController().getDemiurge().getWizard().getWearables();
+                if (a.get(items_almacen.getSelectionModel().getSelectedIndex()) instanceof Wearables) {
+                    getPrincipalController().getDemiurge().getContainerManager().addItem(a, items_almacen.getSelectionModel().getSelectedIndex(), c);
+                } else {
+                    getPrincipalController().getDemiurge().getContainerManager().addItem(a, items_almacen.getSelectionModel().getSelectedIndex(), b);
+                }
+//                getPrincipalController().getDemiurge().getContainerManager().addItem(a, items_almacen.getSelectionModel().getSelectedIndex(), b);
             } else {
                 //no se ha seleccionado nada alert
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,7 +121,8 @@ public class AlmacenController extends BaseScreenController {
                 alert.setHeaderText("No se ha seleccionado ningun item");
                 alert.showAndWait();
             }
-        } catch (ContainerUnacceptedItemException | ContainerFullException e){
+        } catch (ContainerUnacceptedItemException |
+                 ContainerFullException e) {
             if (e instanceof ContainerUnacceptedItemException) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Mover Almacen");
@@ -126,6 +135,7 @@ public class AlmacenController extends BaseScreenController {
                 alert.showAndWait();
             }
         }
+
         principalCargado();
     }
 }

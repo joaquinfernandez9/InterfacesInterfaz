@@ -93,7 +93,6 @@ public class CasaMagoController extends BaseScreenController {
         try {
             if (index != -1) {
                 getPrincipalController().getDemiurge().getHomeManager().learnSpell(index);
-                System.out.println("dormio");
                 principalCargado();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,7 +112,7 @@ public class CasaMagoController extends BaseScreenController {
                 alert.setContentText("Estas muy cansado");
             } else if (e instanceof WizardNotEnoughEnergyException) {
                 alert.setContentText(e.getMessage());
-            } else if (e instanceof HomeNotEnoughSingaException) {
+            } else {
                 alert.setContentText(e.getMessage());
             }
             alert.showAndWait();
