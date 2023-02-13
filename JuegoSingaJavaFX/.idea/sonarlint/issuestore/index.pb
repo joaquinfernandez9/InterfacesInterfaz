@@ -96,22 +96,12 @@ TcodigoBase/src/main/java/game/objectContainer/exceptions/ContainerFullException
 UcodigoBase/src/main/java/game/objectContainer/exceptions/ContainerErrorException.java,8\a\8ac4f7dc730389e746bcc96bb7cafeef0431f769
 b
 2interfaz/src/main/resources/i18n/textos.properties,6\3\6317ad4eb365781d7b93908620cd1b0ca81fec7c
-Z
-*interfaz/src/main/java/ui/main/MainFX.java,d\7\d7e84c5a605aea7dd3595929fc11e913a6650ee0
 `
 0interfaz/src/main/java/ui/main/StartupScene.java,a\4\a4eaacf183d58c8fb60cc0238069ca9690f18dca
 \
 ,interfaz/src/main/java/ui/main/Produces.java,8\4\84c1603b2d9010494ef59ff15e5675c4e200fb3e
 w
 G.idea/sonarlint/issuestore/1/f/1f1763f358c257ea3515417352b82b0165647ad1,4\4\441e6168af36afe9568996929caf6842abd87b08
-j
-:interfaz/src/main/java/ui/pantalla/menu/MenuViewModel.java,b\0\b0843e7faad69f7d56e48b18a7f1f4c4dc6f185f
-f
-6interfaz/src/main/java/ui/pantalla/menu/MenuState.java,a\5\a5498af7de6dae092d11881804679aa9bee1af4d
-r
-Binterfaz/src/main/java/ui/pantalla/mazmorra/MazmorraViewModel.java,4\0\40a8fd76fdac4fe06002161f58d68b12ba0b1abe
-n
->interfaz/src/main/java/ui/pantalla/mazmorra/MazmorraState.java,2\1\21f415411e95abdd11be084639351b2d20831bd7
 ^
 .codigoBase/src/main/java/game/Interactive.java,f\5\f5c285175b1b1cf29d77372e7f31837425548a14
 ]
@@ -124,8 +114,6 @@ B
 XML/pom.xml,1\d\1d930acecc6d028f21d5f205fd70edadaa583505
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-^
-.interfaz/src/main/java/ui/WizardNightmare.java,a\b\ab036737cae96393d308eac9998fdf42e8c10800
 k
 ;codigoBase/src/main/java/console/ConsoleDungeonManager.java,6\f\6fd28aee8b58cd18ee11bfcacbb499520b388740
 m
@@ -154,8 +142,6 @@ w
 G.idea/sonarlint/issuestore/9/c/9ce42e01c4de751745108574b176b339a0930848,4\d\4d574ad5ef84b97edbeeefc3685de7bd917d7444
 w
 G.idea/sonarlint/issuestore/9/c/9cf5fd6b6f7733a23bc2f8468915b3dee524e54e,0\3\03781d92edd502fd884276b9bd19d954827fc53a
-w
-G.idea/sonarlint/issuestore/2/1/21f415411e95abdd11be084639351b2d20831bd7,0\8\08089752463c928d3f080fd6b79d6fbdecabd3b2
 w
 G.idea/sonarlint/issuestore/8/4/84c1603b2d9010494ef59ff15e5675c4e200fb3e,8\e\8ed24e1a01417e2f4f0313dddae1f1cbdefbd663
 w
@@ -191,8 +177,6 @@ G.idea/sonarlint/issuestore/1/d/1d930acecc6d028f21d5f205fd70edadaa583505,5\9\59
 w
 G.idea/sonarlint/issuestore/a/4/a4eaacf183d58c8fb60cc0238069ca9690f18dca,b\6\b6eff35f59c208db936a507b3da90ed7ea0d3be4
 w
-G.idea/sonarlint/issuestore/b/9/b9e6cee8ec8688e001cee8aacbca0e346634155a,6\b\6b7cbb1f35b983031955d1101a2b878567dd2b83
-w
 G.idea/sonarlint/issuestore/6/3/6317ad4eb365781d7b93908620cd1b0ca81fec7c,4\9\49a696c26e1009ce5c4c50e242fd23cb9276d1e6
 w
 G.idea/sonarlint/issuestore/8/8/88df0c6d7bbae4894b081456cc6aecc46f93603e,2\3\239270ee808eb99d006f724e87f337e92dd98af6
@@ -220,8 +204,6 @@ b
 2codigoBase/src/main/java/game/object/Necklace.java,0\c\0c666814ab893a82079d4f18865dfc01bf38a301
 m
 =codigoBase/src/main/java/game/objectContainer/JewelryBag.java,5\e\5ec8b3105628eb60f5d36d8fe1e54deb57a50f14
-\
-,interfaz/src/main/java/ui/main/DIJavafx.java,1\1\115396beb0dffb44a8c7abf34e26cad81dea75f6
 f
 6codigoBase/src/main/java/game/object/SingaCrystal.java,e\6\e63c2228ff773beba4c6745a6bbe3c16dc032ff5
 m
@@ -238,8 +220,6 @@ h
 8codigoBase/src/main/java/game/spellContainer/Memory.java,6\1\61e063e535df3b34e7137f2f316789982fc45193
 k
 ;codigoBase/src/main/java/game/spellContainer/Knowledge.java,0\1\01b2937653f4b86a4e7fe426d404e9d94fc7b515
-_
-/codigoBase/src/main/java/game/dungeon/Room.java,1\9\1959d2bc8fb7f2b3927f676e0dcfd34bf571960b
 `
 0codigoBase/src/main/java/game/object/Weapon.java,5\8\58df5cf0ad2dacd8e063ee2a55e4aeadece8163b
 d
@@ -250,13 +230,9 @@ f
 6codigoBase/src/main/java/game/character/Character.java,9\0\90408becab0d111a14c6f6b1c959fb4264dfcd11
 ]
 -interfaz/src/main/java/ui/common/Screens.java,7\9\79eb5dd9891ec5812f702a2f7daa3774706fa3ad
-W
-'interfaz/src/main/java/module-info.java,1\e\1e86d0cfaa0b0e61750fc7c7d4861dab42adfe68
-l
-<interfaz/src/main/java/ui/pantalla/almacen/AlmacenState.java,9\c\9c1cbc27554f2b929cda524d34b71ff45c54db7f
 l
 <codigoBase/src/main/java/game/objectContainer/Wearables.java,c\a\ca9543f496b0d7e81040e980f6ad2f3227e7f821
 _
 /codigoBase/src/main/java/game/dungeon/Site.java,f\9\f968527e020bf02c30ab98bc2c3ec8eb167658d8
-s
-Cinterfaz/src/main/java/ui/pantalla/mazmorra/MazmorraController.java,b\9\b9e6cee8ec8688e001cee8aacbca0e346634155a
+_
+/codigoBase/src/main/java/game/dungeon/Room.java,1\9\1959d2bc8fb7f2b3927f676e0dcfd34bf571960b

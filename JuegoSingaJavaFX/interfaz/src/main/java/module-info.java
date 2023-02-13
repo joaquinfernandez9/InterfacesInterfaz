@@ -20,6 +20,7 @@ module interfaz {
 
 
     opens ui.main;
+    opens ui.pantalla.mazmorra;
     opens ui.pantalla.almacen;
     opens ui.pantalla.casaMago;
     opens ui.pantalla.menu;
