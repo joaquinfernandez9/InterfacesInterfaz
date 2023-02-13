@@ -7,11 +7,9 @@
    <top>
       <MenuBar fx:id="menu" BorderPane.alignment="CENTER">
         <menus>
-            <Menu mnemonicParsing="false" text="Reviews">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
+<!--            un menu para guardar, pausar y salir que sean las opciones de la partida-->
+<!--            otro menu para moverse entre las pantallas, ir a home, ir a la mazmorra, etc..-->
+<!--            about-->
             <Menu fx:id="menuPausa" mnemonicParsing="false" text="Opciones">
                 <items>
                     <MenuItem fx:id="menuPausaPausar" onAction="#pausar" mnemonicParsing="false" text="Pausar" />
@@ -19,6 +17,11 @@
                     <MenuItem fx:id="menuPausaSalir" onAction="#salir" mnemonicParsing="false" text="Salir" />
                     <MenuItem fx:id="menuPausaMenuPrincipal" onAction="#menuPrincipal" mnemonicParsing="false" text="Menu Principal" />
                 </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Reviews">
+                <items>
+                   <MenuItem mnemonicParsing="false" text="About" />
+               </items>
             </Menu>
         </menus>
       </MenuBar>

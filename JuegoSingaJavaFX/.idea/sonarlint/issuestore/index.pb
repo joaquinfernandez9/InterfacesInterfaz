@@ -159,8 +159,6 @@ G.idea/sonarlint/issuestore/d/4/d418529564e6f160e4e9fbb3943ad5efd5e056a7,5\b\5b
 w
 G.idea/sonarlint/issuestore/a/7/a7fee96e8e96e3c0bc3330e3aad3f5cba95d8127,5\7\5776afe0ddb8fe3a6f66f97901a0f018c1817571
 w
-G.idea/sonarlint/issuestore/d/7/d7e84c5a605aea7dd3595929fc11e913a6650ee0,2\1\21d08cf75010cdb00ed656cc65c7084cf9af0557
-w
 G.idea/sonarlint/issuestore/0/1/01eb37a55939b896238c0dba1b700265d418ff77,7\2\72ccf64701a4be7104c95a2555540bf7c60a5d69
 w
 G.idea/sonarlint/issuestore/1/3/135eec947b3eeb3816c00a13d205a39c367d6ccd,4\9\49da57b84e7fa11b9facede50cd3e0b40387b729
@@ -236,3 +234,17 @@ _
 /codigoBase/src/main/java/game/dungeon/Site.java,f\9\f968527e020bf02c30ab98bc2c3ec8eb167658d8
 _
 /codigoBase/src/main/java/game/dungeon/Room.java,1\9\1959d2bc8fb7f2b3927f676e0dcfd34bf571960b
+n
+>interfaz/src/main/java/ui/pantalla/mazmorra/MazmorraState.java,2\1\21f415411e95abdd11be084639351b2d20831bd7
+j
+:interfaz/src/main/java/ui/pantalla/menu/MenuViewModel.java,b\0\b0843e7faad69f7d56e48b18a7f1f4c4dc6f185f
+f
+6interfaz/src/main/java/ui/pantalla/menu/MenuState.java,a\5\a5498af7de6dae092d11881804679aa9bee1af4d
+k
+;interfaz/src/main/java/ui/pantalla/menu/MenuController.java,5\5\55dce8b9d10590c56ef6d7916e1b021ac799a542
+^
+.interfaz/src/main/java/ui/WizardNightmare.java,a\b\ab036737cae96393d308eac9998fdf42e8c10800
+u
+Einterfaz/src/main/java/ui/pantalla/principal/PrincipalController.java,a\7\a70b6f2e10851f4958741d8ad2bffc8c55002a8e
+s
+Cinterfaz/src/main/java/ui/pantalla/mazmorra/MazmorraController.java,b\9\b9e6cee8ec8688e001cee8aacbca0e346634155a
