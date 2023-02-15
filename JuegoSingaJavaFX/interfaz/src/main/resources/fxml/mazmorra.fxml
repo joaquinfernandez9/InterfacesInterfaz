@@ -4,86 +4,78 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="mamorra" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantalla.mazmorra.MazmorraController">
-    <TextArea id="logCriaturas" editable="false" layoutX="205.0" layoutY="506.0" prefHeight="200.0" prefWidth="850.0"/>
-    <Button fx:id="huir" layoutX="905.0" layoutY="374.0" mnemonicParsing="false" onAction="#huir" prefHeight="79.0"
-            prefWidth="112.0" text="Buscar"/>
-    <Button fx:id="luchar" layoutX="194.0" layoutY="374.0" mnemonicParsing="false" onAction="#luchar" prefHeight="79.0"
-            prefWidth="112.0" text="Luchar"/>
-    <Button fx:id="lanzarHechizos" layoutX="30.0" layoutY="374.0" mnemonicParsing="false" onAction="#lanzarHechizos"
-            prefHeight="79.0" prefWidth="112.0" text="Lanzar Hechizo"/>
-    <Button fx:id="abrirCofre" layoutX="1077.0" layoutY="374.0" mnemonicParsing="false" onAction="#abrirCofre"
-            prefHeight="79.0" prefWidth="112.0" text="Abrir cofre"/>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="mamorra" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantalla.mazmorra.MazmorraController">
+    <TextArea id="logCriaturas" editable="false" layoutX="205.0" layoutY="506.0" prefHeight="200.0" prefWidth="850.0" />
+    <Button fx:id="huir" layoutX="905.0" layoutY="374.0" mnemonicParsing="false" onAction="#huir" prefHeight="79.0" prefWidth="112.0" text="Buscar" />
+    <Button fx:id="luchar" layoutX="194.0" layoutY="374.0" mnemonicParsing="false" onAction="#luchar" prefHeight="79.0" prefWidth="112.0" text="Luchar" />
+    <Button fx:id="lanzarHechizos" layoutX="30.0" layoutY="374.0" mnemonicParsing="false" onAction="#lanzarHechizos" prefHeight="79.0" prefWidth="112.0" text="Lanzar Hechizo" />
+    <Button fx:id="abrirCofre" layoutX="1077.0" layoutY="374.0" mnemonicParsing="false" onAction="#abrirCofre" prefHeight="79.0" prefWidth="112.0" text="Abrir cofre" />
 
     <Label fx:id="vidaMago" layoutX="70.0" layoutY="117.0" text="Vida:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
     <Label fx:id="energiaMago" layoutX="62.0" layoutY="162.0" text="Energia:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
     <Label fx:id="cristalesMago" layoutX="60.0" layoutY="212.0" text="Cristales:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
     <Label fx:id="vidaCriatura" layoutX="1027.0" layoutY="117.0" text="Vida:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
     <Label fx:id="ataqueCriatura" layoutX="1017.0" layoutY="162.0" text="Ataque:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
     <Label fx:id="tipoCriatura" layoutX="1026.0" layoutY="212.0" text="Tipo:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
-    <GridPane fx:id="roomGridPane" layoutX="400.0" layoutY="65.0" prefHeight="400.0" prefWidth="400.0">
-        <Button fx:id="r0c0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <Button fx:id="r0c1" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Button fx:id="r0c2" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-        <Button fx:id="r0c3" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
-        <Button fx:id="r0c4" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <GridPane fx:id="roomGridPane" layoutX="443.0" layoutY="65.0" prefHeight="375.0" prefWidth="375.0">
+        <Button fx:id="r0c0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button fx:id="r0c1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button fx:id="r0c2" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button fx:id="r0c3" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Button fx:id="r0c4" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
 
-        <Button fx:id="r1c0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <Button fx:id="r1c1" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <Button fx:id="r1c2" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-        <Button fx:id="r1c3" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-        <Button fx:id="r1c4" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+        <Button fx:id="r1c0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Button fx:id="r1c1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="r1c2" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Button fx:id="r1c3" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Button fx:id="r1c4" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
 
-        <Button fx:id="r2c0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <Button fx:id="r2c1" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-        <Button fx:id="r2c2" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-        <Button fx:id="r2c3" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-        <Button fx:id="r2c4" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+        <Button fx:id="r2c0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Button fx:id="r2c1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button fx:id="r2c2" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button fx:id="r2c3" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Button fx:id="r2c4" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
 
-        <Button fx:id="r3c0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-        <Button fx:id="r3c1" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-        <Button fx:id="r3c2" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-        <Button fx:id="r3c3" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-        <Button fx:id="r3c4" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+        <Button fx:id="r3c0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Button fx:id="r3c1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Button fx:id="r3c2" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Button fx:id="r3c3" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Button fx:id="r3c4" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
 
-        <Button fx:id="r4c0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-        <Button fx:id="r4c1" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-        <Button fx:id="r4c2" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-        <Button fx:id="r4c3" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-        <Button fx:id="r4c4" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+        <Button fx:id="r4c0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Button fx:id="r4c1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Button fx:id="r4c2" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Button fx:id="r4c3" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+        <Button fx:id="r4c4" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
     </GridPane>
     <Label fx:id="tiempo" layoutX="56.0" layoutY="35.0" text="Tiempo:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0"/>
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
-    <Button fx:id="recogerCofre" layoutX="1077.0" layoutY="252.0" mnemonicParsing="false" onAction="#recogerCofre"
-            prefHeight="79.0" prefWidth="112.0" text="Recoger Objetos"/>
+    <Button fx:id="recogerCofre" layoutX="1077.0" layoutY="252.0" mnemonicParsing="false" onAction="#recogerCofre" prefHeight="79.0" prefWidth="112.0" text="Recoger Objetos" />
 </AnchorPane>

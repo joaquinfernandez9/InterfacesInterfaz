@@ -2,6 +2,7 @@ package ui.pantalla.mazmorra;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -100,67 +101,15 @@ public class MazmorraController extends BaseScreenController {
     @Override
     public void principalCargado() {
         super.principalCargado();
-        Image muro = new Image(getClass().getResourceAsStream("img/Muro.jpg"));
-        Image puerta = new Image(getClass().getResourceAsStream("img/Puerta.jpg"));
-        Image cofre = new Image(getClass().getResourceAsStream("img/Puerta.jpg"));
-        Image mago = new Image(getClass().getResourceAsStream("img/Mago.jpg"));
-        Image enemigo = new Image(getClass().getResourceAsStream("img/Enemigo.jpg"));
-        Image suelo1 = new Image(getClass().getResourceAsStream("img/Suelo1.jpg"));
-        Image suelo2 = new Image(getClass().getResourceAsStream("img/Suelo2.jpg"));
-        Image suelo3 = new Image(getClass().getResourceAsStream("img/Suelo3.jpg"));
-        ImageView muroView = new ImageView(muro);
-        ImageView puertaView = new ImageView(puerta);
-        ImageView cofreView = new ImageView(cofre);
-        ImageView magoView = new ImageView(mago);
-        ImageView enemigoView = new ImageView(enemigo);
-        ImageView suelo1View = new ImageView(suelo1);
-        ImageView suelo2View = new ImageView(suelo2);
-        ImageView suelo3View = new ImageView(suelo3);
+        setImagenes();
+        //cargar las imagenes que toquen y activar las funciones de los botones segun la habitacion en la que esté
+        //en los que se pongan muros/suelos se desactivan
+        //en los que se pongan puertas, te envie a la habitacion en esa direccion
+        //en el que se ponga un cofre, abre el cofre
+        //en el que se ponga el enemigo, empieza la lucha y se abre un alert con botones de los posibles ataques (pegarse o usar los hechizos)
+        //en el que se ponga el mago, pues busca objetos y le salga un alert con una lista de los objetos(que puedas seleccionar varios) y un boton de recoger
 
-        r0c0.setGraphic(muroView);
-        r0c1.setGraphic(muroView);
-        r0c2.setGraphic(puertaView);
-        r0c3.setGraphic(muroView);
-        r0c4.setGraphic(muroView);
-
-        r1c0.setGraphic(muroView);
-        r1c1.setGraphic(cofreView);
-        r1c2.setGraphic(suelo1View);
-        r1c3.setGraphic(suelo3View);
-        r1c4.setGraphic(muroView);
-
-        r2c0.setGraphic(puertaView);
-        r2c1.setGraphic(suelo3View);
-        r2c2.setGraphic(enemigoView);
-        r2c3.setGraphic(suelo2View);
-        r2c4.setGraphic(puertaView);
-
-        r3c0.setGraphic(muroView);
-        r3c1.setGraphic(suelo1View);
-        r3c2.setGraphic(magoView);
-        r3c3.setGraphic(suelo1View);
-        r3c4.setGraphic(muroView);
-
-        r4c0.setGraphic(muroView);
-        r4c1.setGraphic(muroView);
-        r4c2.setGraphic(puertaView);
-        r4c3.setGraphic(muroView);
-        r4c4.setGraphic(muroView);
-
-        //TODO, al darle al boton de empezar mazmorra peta porque el xml que tenemos no es el final
-        // intenta hacer una llamada a un nodo del xml que no encuentra, devuelve nulo y salta el error
-
-        //tener un lugar donde se vea la vida del mago, la energia y el inventario
-        //en vez de una caja de texto para ver los datos de la habitacion usar imagenes
-
-        //cargar los datos de la habitacion
-        //cada puerta se escriba en un boton
-        //añadir la funcionalidad al resto de botones, y que si se pulsan cuando no se puede
-        //si hay enemigo solo puedes pegarte o salir popr la puerta que has entrado
-        //si no hay cofre el boton de abrir cofre, salte un mensaje
-        //si no al buscar en la habitacion no se encuentra nada, salte un mensaje
-        //si se encuentra algo que refresque la imagen de la habitacion con un dibujo con el objeto y que al clicar se recoja
-
+        //que la vida y la energia se muestren como barras de colores y debajo un boton cuadrado con un icono que te abra su inventario
     }
 
     @FXML
@@ -181,6 +130,162 @@ public class MazmorraController extends BaseScreenController {
 
     @FXML
     private void abrirCofre(ActionEvent actionEvent) {
+    }
+
+    private void setImagenes(){
+        Image mago = new Image(getClass().getResourceAsStream("/img/Mago.jpg"));
+        Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
+        Image cofre = new Image(getClass().getResourceAsStream("/img/Cofre.jpg"));
+        Image puerta = new Image(getClass().getResourceAsStream("/img/Puerta.jpg"));
+        Image muro = new Image(getClass().getResourceAsStream("/img/Muro.jpg"));
+        Image suelo1 = new Image(getClass().getResourceAsStream("/img/Suelo1.jpg"));
+        Image suelo2 = new Image(getClass().getResourceAsStream("/img/Suelo2.jpg"));
+        Image suelo3 = new Image(getClass().getResourceAsStream("/img/Suelo3.jpg"));
+
+        ImageView magoView = new ImageView(mago);
+        ImageView enemigoView = new ImageView(enemigo);
+        ImageView cofreView = new ImageView(cofre);
+        ImageView puertaNorte = new ImageView(puerta);
+        ImageView puertaOeste = new ImageView(puerta);
+        ImageView puertaEste = new ImageView(puerta);
+        ImageView puertaSur = new ImageView(puerta);
+        ImageView muroView1 = new ImageView(muro);
+        ImageView muroView2 = new ImageView(muro);
+        ImageView muroView3 = new ImageView(muro);
+        ImageView muroView4 = new ImageView(muro);
+        ImageView muroView5 = new ImageView(muro);
+        ImageView muroView6 = new ImageView(muro);
+        ImageView muroView7 = new ImageView(muro);
+        ImageView muroView8 = new ImageView(muro);
+        ImageView muroView9 = new ImageView(muro);
+        ImageView muroView10 = new ImageView(muro);
+        ImageView muroView11 = new ImageView(muro);
+        ImageView muroView12 = new ImageView(muro);
+        ImageView sueloView1 = new ImageView(suelo1);
+        ImageView sueloView2 = new ImageView(suelo2);
+        ImageView sueloView3 = new ImageView(suelo3);
+        ImageView sueloView4 = new ImageView(suelo1);
+        ImageView sueloView5 = new ImageView(suelo2);
+        ImageView sueloView6 = new ImageView(suelo3);
+        ImageView sueloView7 = new ImageView(suelo1);
+        ImageView sueloView8 = new ImageView(suelo2);
+        ImageView sueloView9 = new ImageView(suelo3);
+
+        int size = 75;
+        magoView.setFitWidth(size);
+        magoView.setFitHeight(size);
+        enemigoView.setFitWidth(size);
+        enemigoView.setFitHeight(size);
+        cofreView.setFitWidth(size);
+        cofreView.setFitHeight(size);
+
+        puertaNorte.setFitWidth(size);
+        puertaNorte.setFitHeight(size);
+        puertaOeste.setFitWidth(size);
+        puertaOeste.setFitHeight(size);
+        puertaEste.setFitWidth(size);
+        puertaEste.setFitHeight(size);
+        puertaSur.setFitWidth(size);
+        puertaSur.setFitHeight(size);
+
+        muroView1.setFitWidth(size);
+        muroView1.setFitHeight(size);
+        muroView2.setFitWidth(size);
+        muroView2.setFitHeight(size);
+        muroView3.setFitWidth(size);
+        muroView3.setFitHeight(size);
+        muroView4.setFitWidth(size);
+        muroView4.setFitHeight(size);
+        muroView5.setFitWidth(size);
+        muroView5.setFitHeight(size);
+        muroView6.setFitWidth(size);
+        muroView6.setFitHeight(size);
+        muroView7.setFitWidth(size);
+        muroView7.setFitHeight(size);
+        muroView8.setFitWidth(size);
+        muroView8.setFitHeight(size);
+        muroView9.setFitWidth(size);
+        muroView9.setFitHeight(size);
+        muroView10.setFitWidth(size);
+        muroView10.setFitHeight(size);
+        muroView11.setFitWidth(size);
+        muroView11.setFitHeight(size);
+        muroView12.setFitWidth(size);
+        muroView12.setFitHeight(size);
+
+        sueloView1.setFitWidth(size);
+        sueloView1.setFitHeight(size);
+        sueloView2.setFitWidth(size);
+        sueloView2.setFitHeight(size);
+        sueloView3.setFitWidth(size);
+        sueloView3.setFitHeight(size);
+        sueloView4.setFitWidth(size);
+        sueloView4.setFitHeight(size);
+        sueloView5.setFitWidth(size);
+        sueloView5.setFitHeight(size);
+        sueloView6.setFitWidth(size);
+        sueloView6.setFitHeight(size);
+        sueloView7.setFitWidth(size);
+        sueloView7.setFitHeight(size);
+        sueloView8.setFitWidth(size);
+        sueloView8.setFitHeight(size);
+        sueloView9.setFitWidth(size);
+        sueloView9.setFitHeight(size);
+
+        r0c0.setGraphic(muroView1);
+        r0c0.setPadding(Insets.EMPTY);
+        r0c1.setGraphic(muroView2);
+        r0c1.setPadding(Insets.EMPTY);
+        r0c2.setGraphic(puertaNorte);
+        r0c2.setPadding(Insets.EMPTY);
+        r0c3.setGraphic(muroView3);
+        r0c3.setPadding(Insets.EMPTY);
+        r0c4.setGraphic(muroView4);
+        r0c4.setPadding(Insets.EMPTY);
+
+        r1c0.setGraphic(muroView5);
+        r1c0.setPadding(Insets.EMPTY);
+        r1c1.setGraphic(cofreView);
+        r1c1.setPadding(Insets.EMPTY);
+        r1c2.setGraphic(sueloView1);
+        r1c2.setPadding(Insets.EMPTY);
+        r1c3.setGraphic(sueloView2);
+        r1c3.setPadding(Insets.EMPTY);
+        r1c4.setGraphic(muroView6);
+        r1c4.setPadding(Insets.EMPTY);
+
+        r2c0.setGraphic(puertaOeste);
+        r2c0.setPadding(Insets.EMPTY);
+        r2c1.setGraphic(sueloView3);
+        r2c1.setPadding(Insets.EMPTY);
+        r2c2.setGraphic(enemigoView);
+        r2c2.setPadding(Insets.EMPTY);
+        r2c3.setGraphic(sueloView4);
+        r2c3.setPadding(Insets.EMPTY);
+        r2c4.setGraphic(puertaEste);
+        r2c4.setPadding(Insets.EMPTY);
+
+        r3c0.setGraphic(muroView7);
+        r3c0.setPadding(Insets.EMPTY);
+        r3c1.setGraphic(sueloView5);
+        r3c1.setPadding(Insets.EMPTY);
+        r3c2.setGraphic(magoView);
+        r3c2.setPadding(Insets.EMPTY);
+        r3c3.setGraphic(sueloView6);
+        r3c3.setPadding(Insets.EMPTY);
+        r3c4.setGraphic(muroView8);
+        r3c4.setPadding(Insets.EMPTY);
+
+        r4c0.setGraphic(muroView9);
+        r4c0.setPadding(Insets.EMPTY);
+        r4c1.setGraphic(muroView10);
+        r4c1.setPadding(Insets.EMPTY);
+        r4c2.setGraphic(puertaSur);
+        r4c2.setPadding(Insets.EMPTY);
+        r4c3.setGraphic(muroView11);
+        r4c3.setPadding(Insets.EMPTY);
+        r4c4.setGraphic(muroView12);
+        r4c4.setPadding(Insets.EMPTY);
     }
 }
 

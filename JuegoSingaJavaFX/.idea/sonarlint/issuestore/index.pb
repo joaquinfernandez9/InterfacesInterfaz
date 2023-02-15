@@ -1,9 +1,6 @@
 
 U
 %.mvn/wrapper/maven-wrapper.properties,3\2\32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 w
 G.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,e\d\ed67eb178d523a4b3f117dcbe0eda5196367ceec
 w
@@ -234,17 +231,9 @@ _
 /codigoBase/src/main/java/game/dungeon/Site.java,f\9\f968527e020bf02c30ab98bc2c3ec8eb167658d8
 _
 /codigoBase/src/main/java/game/dungeon/Room.java,1\9\1959d2bc8fb7f2b3927f676e0dcfd34bf571960b
-n
->interfaz/src/main/java/ui/pantalla/mazmorra/MazmorraState.java,2\1\21f415411e95abdd11be084639351b2d20831bd7
 j
 :interfaz/src/main/java/ui/pantalla/menu/MenuViewModel.java,b\0\b0843e7faad69f7d56e48b18a7f1f4c4dc6f185f
 f
 6interfaz/src/main/java/ui/pantalla/menu/MenuState.java,a\5\a5498af7de6dae092d11881804679aa9bee1af4d
 k
 ;interfaz/src/main/java/ui/pantalla/menu/MenuController.java,5\5\55dce8b9d10590c56ef6d7916e1b021ac799a542
-^
-.interfaz/src/main/java/ui/WizardNightmare.java,a\b\ab036737cae96393d308eac9998fdf42e8c10800
-u
-Einterfaz/src/main/java/ui/pantalla/principal/PrincipalController.java,a\7\a70b6f2e10851f4958741d8ad2bffc8c55002a8e
-s
-Cinterfaz/src/main/java/ui/pantalla/mazmorra/MazmorraController.java,b\9\b9e6cee8ec8688e001cee8aacbca0e346634155a
