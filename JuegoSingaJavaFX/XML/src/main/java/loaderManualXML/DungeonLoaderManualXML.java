@@ -76,19 +76,13 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
     static JewelryBag JEWELRY_BAG_WIZARD;
 
-    //TODO: INICIO CAMBIO
     static int MAX_WEAPONS = 1;
     static int MAX_NECKLACES = 1;
     static int MAX_RINGS = 2;
-    //TODO: FIN CAMBIO
 
     @Override
     public void load(Demiurge demiurge, DungeonConfiguration dungeonConfiguration, File xmlFile) throws ParserConfigurationException, IOException, SAXException, ContainerUnacceptedItemException, XPathExpressionException, ValueOverMaxException, ContainerFullException, ItemCreationErrorException, SpellUnknowableException {
-//        final File XMLFILE = new File("xml/dungeon-V.02.xml");
         final File XSDFILE = new File("xml/dungeon_schema.xsd");
-
-//        validateAgainstSchema(xmlFile, XSDFILE);
-
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -110,7 +104,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
     @Override
     public void save(Demiurge demiurge, DungeonConfiguration dungeonConfiguration, File file) throws IOException {
-//        Path filePath = Paths.get("data/prueba.xml");
         Path filePath = file.toPath();
         StringBuilder demiurgeBuilder = new StringBuilder();
         String home = saveHome(demiurge);
@@ -507,14 +500,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void createRoom(Node roomNode) throws ItemCreationErrorException, SpellUnknowableException, ValueOverMaxException, ContainerUnacceptedItemException, ContainerFullException {
-//            <room>
-//                <id>1</id>
-//                <exit value="false"/>
-//                <description>Room 1 with creature and necklace</description>
-//				  <visited>false</visited>
-//                <items...>
-//                <creatures...>
-//            </room>
         NodeList roomChildren = roomNode.getChildNodes();
         int id = -1;
         boolean exit = false;
@@ -562,19 +547,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static Creature getCreatureNode(Node creaturesNode) throws SpellUnknowableException, ValueOverMaxException {
-//				<creatures>
-//					<creature type="electricity">
-//						<name>Big Monster</name>
-//						<life>5</life>
-//						<punch>1</punch>
-//						<spells>
-//							<spell>
-//								<domain element="electricity"/>
-//								<level value="1"/>
-//							</spell>
-//						</spells>
-//					</creature>
-//				</creatures>
         Creature c = null;
         for (int i = 0; i < creaturesNode.getChildNodes().getLength(); i++) {
             Node child = creaturesNode.getChildNodes().item(i);
@@ -621,7 +593,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void createWizard(Demiurge demiurge, Document baseXML, XPath xpath) throws XPathExpressionException, ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException, ValueOverMaxException {
-        // GETTING HOME CHILDREN --> [description, comfort, singa, chest, library]
         XPathExpression expr = xpath.compile("/demiurge/wizard/*");
         NodeList list = (NodeList) expr.evaluate(baseXML, XPathConstants.NODESET);
         for (int i = 0; i < list.getLength(); i++) {
@@ -656,13 +627,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void createJewelryBag(Node node) throws ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException {
-//        <capacity>2</capacity>
-//			<items>
-//				<item type="necklace">
-//					<domain element="energy"/>
-//					<level value="1"/>
-//				</item>
-//			</items>
         int capacity = 0;
         List<Item> items = new ArrayList<>();
         NodeList jewelryChilds = node.getChildNodes();
@@ -691,23 +655,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void createWereables(Node node) throws ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException {
-//        <weaponsMAX>1</weaponsMAX>
-//			<necklacesMAX>1</necklacesMAX>
-//			<ringsMAX>2</ringsMAX>
-//			<items>
-//				<item type="necklace">
-//					<domain element="life"/>
-//					<level value="1"/>
-//				</item>
-//				<item type="ring">
-//					<domain element="air"/>
-//					<level value="1"/>
-//				</item>
-//				<item type="weapon">
-//					<domain element="none"/>
-//					<level value="1"/>
-//				</item>
-//			</items>
         int weaponsMAX = 0;
         int necklacesMAX = 0;
         int ringsMAX = 0;
@@ -718,15 +665,12 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
             if (elNodoEsElemento(chestChild)) {
                 switch (getNombre(chestChild)) {
                     case "weaponsMAX":
-                        //<weaponsMAX>1</weaponsMAX>
                         weaponsMAX = Integer.parseInt(chestChild.getTextContent());
                         break;
                     case "necklacesMAX":
-//                        <necklacesMAX>1</necklacesMAX>
                         necklacesMAX = Integer.parseInt(chestChild.getTextContent());
                         break;
                     case "ringsMAX":
-                        //<weaponsMAX>1</weaponsMAX>
                         ringsMAX = Integer.parseInt(chestChild.getTextContent());
                         break;
                     case "items":
@@ -759,19 +703,12 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void generateCrystalCarrier(Node node) throws ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException {
-//        <capacity>3</capacity>
-//            <crystals>
-//                <crystal>
-//                    <singa>10</singa>
-//                </crystal>
-//            </crystals>
         NodeList chestChilds = node.getChildNodes();
         for (int j = 0; j < chestChilds.getLength(); j++) {
             Node chestChild = chestChilds.item(j);
             if (elNodoEsElemento(chestChild)) {
                 switch (getNombre(chestChild)) {
                     case "capacity":
-                        //<capacity>X</capacity>
                         INITIAL_CRYSTAL_CARRIER_CAPACITY = Integer.parseInt(chestChild.getTextContent());
                         break;
                     case "crystals":
@@ -791,19 +728,12 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
     private static List<SingaCrystal> getCrystalsNode(Node node, String xPath) throws ItemCreationErrorException {
         List<SingaCrystal> crystals = new ArrayList<>();
-        //            <crystals>
-//                <crystal>
-//                    <singa>10</singa>
-//                </crystal>
-//            </crystals>
         NodeList cristalChilds = node.getChildNodes();
         for (int k = 0; k < cristalChilds.getLength(); k++) {
             Node crystal = cristalChilds.item(k);
             if (elNodoEsElemento(crystal)) {
                 switch (getNombre(crystal)) {
                     case "crystal":
-                        //<singa>10</singa>
-                        //el index es uno porque el primer elemento es mierda
                         int valorReal = Integer.parseInt(crystal.getChildNodes().item(1).getTextContent());
                         SingaCrystal x = SingaCrystal.createCrystal(valorReal);
                         while (valorReal != x.getValue()) {
@@ -822,7 +752,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void createHome(Demiurge demiurge, Document baseXML, XPath xpath) throws XPathExpressionException, ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException, ValueOverMaxException {
-        // GETTING HOME CHILDREN --> [description, comfort, singa, chest, library]
         XPathExpression expr = xpath.compile("/demiurge/dungeon/home/*");
         NodeList list = (NodeList) expr.evaluate(baseXML, XPathConstants.NODESET);
         for (int i = 0; i < list.getLength(); i++) {
@@ -832,14 +761,9 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
                     DESCRIPTION_HOME = node.getTextContent();
                     break;
                 case "comfort":
-                    //<comfort>X</comfort>
                     INITIAL_COMFORT_HOME = Integer.parseInt(node.getTextContent());
                     break;
                 case "singa":
-                    //<singa>
-                    //  <currentValue>X</currentValue>
-                    //  <maxValue>X</maxValue>
-                    // </singa>
                     getHomeSingaValues(node);
                     break;
                 case "chest":
@@ -858,24 +782,12 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static void generateChest(Node node) throws ItemCreationErrorException, ContainerUnacceptedItemException, ContainerFullException {
-        //<chest>
-        //  <capacity>X</capacity>
-        //  <items>
-        //      <item type="X">
-        //          <domain element="X" />
-        //          <level value="X" />
-        //      </item>
-        //      <item...
-        //      </item>
-        //  </items>
-        //</chest>
         NodeList chestChilds = node.getChildNodes();
         for (int j = 0; j < chestChilds.getLength(); j++) {
             Node chestChild = chestChilds.item(j);
             if (elNodoEsElemento(chestChild)) {
                 switch (getNombre(chestChild)) {
                     case "capacity":
-                        //<capacity>X</capacity>
                         INITIAL_CHEST_CAPACITY_HOME = Integer.parseInt(chestChild.getTextContent());
 //                                            c = new Chest(INITIAL_CHEST_CAPACITY);
                         break;
@@ -888,20 +800,10 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
                 }
             }
         }
-        // Una vez que recorrimos todos los elemenos del chest, creamos el objeto
         defineChestAndAddItems();
     }
 
     private static void createLibrary(Node node) throws ValueOverMaxException {
-        //                            <library>
-//                                <spells>
-//                                    <spell>
-//                                        <domain element="X"/>
-//                                        <level value="X"/>
-//                                    </spell>
-//                                    <spell>...</spell>
-//                                </spells>
-//                            </library>
         NodeList libraryChilds = node.getChildNodes();
         for (int j = 0; j < libraryChilds.getLength(); j++) {
             Node chestChild = libraryChilds.item(j);
@@ -909,7 +811,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
                 switch (getNombre(chestChild)) {
                     case "spells":
                         LIBRARY_SPELLS_HOME = getSpellsNode(chestChild, "//home/library/spells/");
-// SOUT                                        System.out.println(LIBRARY_SPELLS);
                         break;
                 }
             }
@@ -925,22 +826,11 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
     private static List<Spell> getSpellsNode(Node spellsNode, String xPath) throws ValueOverMaxException {
         List<Spell> spells = new ArrayList<>();
-//        <spells>
-//            <spell>
-//                <domain element="X"/>
-//                <level value="X"/>
-//            </spell>
-//            <spell>...</spell>
-//        </spells>
         NodeList spellChilds = spellsNode.getChildNodes();
         for (int i = 0; i < spellChilds.getLength(); i++) {
             Node spellChild = spellChilds.item(i);
             if (elNodoEsElemento(spellChild)) {
                 if (getNombre(spellChild).equalsIgnoreCase("spell")) {
-                    //<spell>
-                    //  <domain element="X"/>
-                    //  <level value="X"/>
-                    //</spell>
                     Map<String, Object> domainAndLevel = getDomainAndValue(spellChild.getChildNodes(), xPath + "spell[ " + (i + 1) + " ]/");
                     Domain domain = (Domain) domainAndLevel.get("domain");
                     int level = Integer.parseInt(domainAndLevel.get("level").toString());
@@ -962,7 +852,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static Spell createSpellInstance(Domain domain) {
-        // Depende del nivel, creamos un ataque acorde
         Spell spell = null;
         switch (domain) {
             case FIRE:
@@ -987,22 +876,10 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
     private static List<Item> getItemsNode(Node itemsNode, String xPath) throws ItemCreationErrorException {
         List<Item> items = new ArrayList<>(); // <-- Listado con los items que se van a devolver
-        // <items>
-        //     <item type="X">
-        //         <domain element="X" />
-        //         <level value="X" />
-        //     </item>
-        //     <item...
-        //     </item>
-        // </items>
         NodeList itemsChilds = itemsNode.getChildNodes();
         for (int k = 0; k < itemsChilds.getLength(); k++) {
             Node itemChild = itemsChilds.item(k);
             if (elNodoEsElemento(itemChild)) {
-                // <item type="X">
-                //     <domain element="X" />
-                //     <level value="X" />
-                // </item>
                 String type = getAtributo(itemChild, "type");
                 NodeList itemChilds = itemChild.getChildNodes();
                 Map<String, Object> domainAndLevel = getDomainAndValue(itemChilds, xPath + "/item[" + (k + 1) + "]");
@@ -1024,8 +901,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
     }
 
     private static Map<String, Object> getDomainAndValue(NodeList itemChilds, String xPath) {
-        //     <domain element="X" />
-        //     <level value="X" /> // puede ser null en caso de que type == weapon
         Domain domain;
         int level;
         Map<String, Object> domainAndLevel = new HashMap<>();
@@ -1034,12 +909,10 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
             if (elNodoEsElemento(itemChildChild)) {
                 switch (getNombre(itemChildChild)) {
                     case "domain":
-                        //<domain element="X" />
                         domain = Domain.valueOf(getAtributo(itemChildChild, "element").toUpperCase());
                         domainAndLevel.put("domain", domain);
                         break;
                     case "level":
-                        //<level value="X" />
                         level = Integer.parseInt(getAtributo(itemChildChild, "value"));
                         domainAndLevel.put("level", level);
                         break;
@@ -1065,11 +938,9 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
             if (elNodoEsElemento(nodeSinga)) {
                 switch (getNombre(nodeSinga)) {
                     case "currentValue":
-                        //<currentValue>X</currentValue>
                         values.put("currentValue", Integer.parseInt(nodeSinga.getTextContent()));
                         break;
                     case "maxValue":
-                        //<maxValue>X</maxValue>
                         values.put("maxValue", Integer.parseInt(nodeSinga.getTextContent()));
                         break;
                     default:
