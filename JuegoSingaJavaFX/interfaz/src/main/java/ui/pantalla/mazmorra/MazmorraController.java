@@ -26,18 +26,6 @@ public class MazmorraController extends BaseScreenController {
     private Label tipoCriatura;
     @FXML
     private Label tiempo;
-
-
-    @FXML
-    private Button recogerCofre;
-    @FXML
-    private Button huir;
-    @FXML
-    private Button luchar;
-    @FXML
-    private Button lanzarHechizos;
-    @FXML
-    private Button abrirCofre;
     
     //panel visual de la interfaz
     @FXML
@@ -47,6 +35,7 @@ public class MazmorraController extends BaseScreenController {
     public void principalCargado() {
         super.principalCargado();
         setImagenes();
+        //fondos de https://www.artstation.com/artwork/VdErn4
         //cargar las imagenes que toquen y activar las funciones de los botones segun la habitacion en la que esté
         //en los que se pongan muros/suelos se desactivan
         //en los que se pongan puertas, te envie a la habitacion en esa direccion
@@ -57,33 +46,14 @@ public class MazmorraController extends BaseScreenController {
         //que la vida y la energia se muestren como barras de colores y debajo un boton cuadrado con un icono que te abra su inventario
     }
 
-    @FXML
-    private void recogerCofre(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private void huir(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private void luchar(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private void lanzarHechizos(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private void abrirCofre(ActionEvent actionEvent) {
-    }
-
     private void setImagenes(){
         int size = 75;
 
         Image mago = new Image(getClass().getResourceAsStream("/img/Mago.jpg"));
         Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
-        Image puerta = new Image(getClass().getResourceAsStream("/img/Puerta.jpg"));
         Image cofre = new Image(getClass().getResourceAsStream("/img/Cofre.jpg"));
+        Image crystalFarm = new Image(getClass().getResourceAsStream("/img/CrystalFarm.jpg"));
+        Image puerta = new Image(getClass().getResourceAsStream("/img/Puerta.jpg"));
         Image muro = new Image(getClass().getResourceAsStream("/img/Muro.jpg"));
         Image suelo1 = new Image(getClass().getResourceAsStream("/img/Suelo1.jpg"));
         Image suelo2 = new Image(getClass().getResourceAsStream("/img/Suelo2.jpg"));
@@ -95,6 +65,8 @@ public class MazmorraController extends BaseScreenController {
             int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
 
             if (node instanceof Button button) {
+                button.setDisable(true);
+                button.setOpacity(100);
                 ImageView imgView = new ImageView(muro);
                 if ((rowIndex >= 1 && rowIndex <= 3) && (columnIndex >= 1 && columnIndex <= 3))
                     imgView = new ImageView(suelo1);

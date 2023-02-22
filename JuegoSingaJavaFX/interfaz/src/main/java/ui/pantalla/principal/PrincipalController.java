@@ -113,7 +113,6 @@ public class PrincipalController {
 
     private void cambioPantalla(Pane pantallaNueva) {
         root.setCenter(pantallaNueva);
-
     }
 
     public void initialize() {
@@ -155,8 +154,7 @@ public class PrincipalController {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Resource File");
             //C:\Users\joaqu\Documents\GitHub\InterfacesInterfaz\JuegoSingaJavaFX\XML\src\main\resources
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("XML Files", "*.xml"));
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("XML Files", "*.xml"));
             File selectedFile = fileChooser.showOpenDialog(primaryStage);
             if (selectedFile != null) {
                 loadEnvironment(selectedFile);
@@ -178,7 +176,7 @@ public class PrincipalController {
         });
     }
 
-    //hay q cambiarlo para q ponga la ruta q quiera
+    //hacer que pueda elegir la ruta
     public void guardar() throws IOException {
         dungeonLoaderXML.save(demiurge, dungeonConfiguration, new File("src/main/resources/dungeon.xml"));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

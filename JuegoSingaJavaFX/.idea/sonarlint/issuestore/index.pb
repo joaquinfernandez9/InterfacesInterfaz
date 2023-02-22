@@ -2,8 +2,6 @@
 U
 %.mvn/wrapper/maven-wrapper.properties,3\2\32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
 w
-G.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,e\d\ed67eb178d523a4b3f117dcbe0eda5196367ceec
-w
 G.idea/sonarlint/issuestore/3/2/32e074f71d16c1e88ac02aa83592ca6ad1fd98a8,6\c\6c12c046619028da98e2502918e6e119bd2491c2
 w
 G.idea/sonarlint/issuestore/6/c/6c12c046619028da98e2502918e6e119bd2491c2,0\f\0f9f24b7bfd1b22f013d4bb872dea80ac9f5c879
@@ -189,8 +187,6 @@ i
 9codigoBase/src/main/java/game/actions/PhysicalAttack.java,b\0\b0409b1f332cfddd63abce4ffc9bec914ef64356
 ^
 .codigoBase/src/main/java/game/object/Ring.java,5\6\567a4a2837e83474bf71a9d0a5d1885337ccebb5
-g
-7XML/src/main/java/loaderManualXML/DungeonLoaderXML.java,a\c\ac22de4718ea087e09745e72692a8e2517c84c8a
 b
 2codigoBase/src/main/java/game/object/Necklace.java,0\c\0c666814ab893a82079d4f18865dfc01bf38a301
 m
@@ -217,8 +213,6 @@ d
 -codigoBase/src/main/java/game/util/Value.java,f\2\f207a542e96e2498a1fa612bcac71c3a0911276b
 f
 6codigoBase/src/main/java/game/character/Character.java,9\0\90408becab0d111a14c6f6b1c959fb4264dfcd11
-]
--interfaz/src/main/java/ui/common/Screens.java,7\9\79eb5dd9891ec5812f702a2f7daa3774706fa3ad
 l
 <codigoBase/src/main/java/game/objectContainer/Wearables.java,c\a\ca9543f496b0d7e81040e980f6ad2f3227e7f821
 j
@@ -227,16 +221,8 @@ f
 6interfaz/src/main/java/ui/pantalla/menu/MenuState.java,a\5\a5498af7de6dae092d11881804679aa9bee1af4d
 n
 >interfaz/src/main/java/ui/pantalla/mazmorra/MazmorraState.java,2\1\21f415411e95abdd11be084639351b2d20831bd7
-^
-.interfaz/src/main/java/ui/WizardNightmare.java,a\b\ab036737cae96393d308eac9998fdf42e8c10800
-j
-:interfaz/src/main/java/ui/common/BaseScreenController.java,2\c\2c4190aa0f9333ed82f1bcc464a58c47ac4c1ad8
-u
-Einterfaz/src/main/java/ui/pantalla/principal/PrincipalController.java,a\7\a70b6f2e10851f4958741d8ad2bffc8c55002a8e
 k
 ;interfaz/src/main/java/ui/pantalla/menu/MenuController.java,5\5\55dce8b9d10590c56ef6d7916e1b021ac799a542
-s
-Cinterfaz/src/main/java/ui/pantalla/casaMago/CasaMagoController.java,b\a\ba7267d1a2b41f87dce67cc6f660f64d426d694f
 _
 /codigoBase/src/main/java/game/dungeon/Door.java,1\3\135eec947b3eeb3816c00a13d205a39c367d6ccd
 ^
