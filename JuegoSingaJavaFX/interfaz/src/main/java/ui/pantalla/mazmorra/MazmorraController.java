@@ -1,6 +1,5 @@
 package ui.pantalla.mazmorra;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;

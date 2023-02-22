@@ -22,6 +22,7 @@
             <Font name="Candara" size="15.0" />
         </font>
     </Label>
+
     <Label fx:id="vidaCriatura" layoutX="1027.0" layoutY="117.0" text="Vida:" textFill="WHITE">
         <font>
             <Font name="Candara" size="15.0" />
