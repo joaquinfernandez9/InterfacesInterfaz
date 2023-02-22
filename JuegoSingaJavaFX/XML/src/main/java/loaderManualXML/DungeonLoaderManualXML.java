@@ -909,7 +909,6 @@ public class DungeonLoaderManualXML implements DungeonLoaderXML {
 
         Iterator<Item> itemJewelry = wizard.getJewelryBag().iterator();
         StringBuilder itemBuilder2 = new StringBuilder();
-        ;
         itemJewelry.forEachRemaining(item -> {
             if (item instanceof Necklace) {
                 itemBuilder2.append("necklace");

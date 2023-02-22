@@ -1,0 +1,120 @@
+
+[	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.( İm
+\	java:S112Ş"FDefine and throw a dedicated exception instead of using a generic one.(õÕ£±
+\	java:S112è"FDefine and throw a dedicated exception instead of using a generic one.(ç‹øÊ
+\	java:S112½"FDefine and throw a dedicated exception instead of using a generic one.(ğú§Ó
+d
+java:S1192"HDefine a constant instead of duplicating this literal "<items>" 3 times.(ñ¸˜×ÿÿÿÿÿ
+^
+java:S1192¶"GDefine a constant instead of duplicating this literal "domain" 5 times.(ûÄ­â
+b
+java:S1192‡"FDefine a constant instead of duplicating this literal "items" 4 times.(ùĞºìşÿÿÿÿ
+`
+java:S1192ö"IDefine a constant instead of duplicating this literal "capacity" 3 times.(ä­ÊÊ
+d
+java:S1192Û"NDefine a constant instead of duplicating this literal "<item type=\"" 4 times.(ò•ëw
+`
+java:S1192£"IDefine a constant instead of duplicating this literal "</items>" 3 times.(¹‚Úö
+d
+java:S1192®"MDefine a constant instead of duplicating this literal "currentValue" 5 times.(ŸÜ”ğ
+p
+java:S1192á"TDefine a constant instead of duplicating this literal "NODO NO VÃLIDO EN " 3 times.(‹Š—ˆÿÿÿÿÿ
+b
+java:S1192·"FDefine a constant instead of duplicating this literal "level" 4 times.(¬ú‚Ùûÿÿÿÿ
+e
+java:S1192¯"IDefine a constant instead of duplicating this literal "maxValue" 5 times.(Æú¾Ãùÿÿÿÿ
+l
+java:S1192æ"PDefine a constant instead of duplicating this literal "<level value=\"" 6 times.(³ˆÓ¬şÿÿÿÿ
+^
+java:S1192ä"GDefine a constant instead of duplicating this literal "weapon" 4 times.(öÄ»û
+\
+java:S1192|"FDefine a constant instead of duplicating this literal "value" 3 times.(²¯„
+`
+java:S1192å"IDefine a constant instead of duplicating this literal "necklace" 5 times.(­ö•
+K
+java:S1066œ"/Merge this if statement with the enclosing one.(Ã¨Šùÿÿÿÿ
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑĞæÂÿÿÿÿÿ
+l	java:S117›"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÏÕÆøÿÿÿÿ
+l	java:S117›"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÏÕÆøÿÿÿÿ
+a
+java:S1301À"KReplace this "switch" statement by "if" statements to increase readability.(ë» s
+b
+java:S1301Ñ"KReplace this "switch" statement by "if" statements to increase readability.(Ÿ¸ÿ§
+g
+java:S1301£"KReplace this "switch" statement by "if" statements to increase readability.(çÔÊ—üÿÿÿÿ
+g
+java:S1301×"KReplace this "switch" statement by "if" statements to increase readability.(çêŠ‚øÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ë®É­úÿÿÿÿ
+g
+java:S2095q"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ã¶¨Ëşÿÿÿÿ
+J
+java:S2755"3Disable access to external entities in XML parsing.(‹ñšÑ
+I
+java:S2755O"3Disable access to external entities in XML parsing.(²µŸš
+v
+java:S3008*"[Rename this field "DESCRIPTION_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Œáòÿÿÿÿÿ
+u
+java:S3008+"_Rename this field "INITIAL_COMFORT_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦†‰ü
+s
+java:S3008,"]Rename this field "INITIAL_SINGA_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şş°Í
+|
+java:S3008-"fRename this field "INITIAL_SINGA_CAPACITY_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»°ŞÑ
+|
+java:S3008."fRename this field "INITIAL_CHEST_CAPACITY_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô°™ÿ
+v
+java:S30080"[Rename this field "CHEST_ITEMS_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãôŸüÿÿÿÿ
+p
+java:S30081"URename this field "CHEST_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òğËŞşÿÿÿÿ
+m
+java:S30082"WRename this field "LIBRARY_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú‡€å
+t
+java:S30083"^Rename this field "LIBRARY_SPELLS_HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿá»º
+e
+java:S30084"ORename this field "HOME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éëÇ
+m
+java:S30087"RRename this field "DUNGEON" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÂİÆøÿÿÿÿ
+f
+java:S30089"PRename this field "ROOMS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ñ¤
+l
+java:S3008;"VRename this field "NAME_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í ›
+t
+java:S3008<"^Rename this field "INITIAL_LIFE_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³®æ
+}
+java:S3008="bRename this field "INITIAL_LIFE_MAX_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É™£üÿÿÿÿÿ
+v
+java:S3008>"`Rename this field "INITIAL_ENERGY_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°í›å
+z
+java:S3008?"dRename this field "INITIAL_ENERGY_MAX_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›šßÀ
+
+java:S3008@"kRename this field "INITIAL_CRYSTAL_CARRIER_CAPACITY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»”¥Ä
+}
+java:S3008A"bRename this field "CRYSTALS_CARRIED_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦£ÿ­úÿÿÿÿ
+|
+java:S3008B"aRename this field "CRYSTAL_CARRIER_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ú÷Óûÿÿÿÿ
+q
+java:S3008C"[Rename this field "WEARABLES_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…èâ
+s
+java:S3008D"]Rename this field "JEWELRY_BAG_WIZARD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¸æ
+l
+java:S3008F"VRename this field "MAX_WEAPONS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂèØ©
+s
+java:S3008G"XRename this field "MAX_NECKLACES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì¼î£ùÿÿÿÿ
+o
+java:S3008H"TRename this field "MAX_RINGS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ¡ÍÇúÿÿÿÿ
+M	java:S106S"9Replace this use of System.out or System.err by a logger.(öÓÜ
+I
+java:S1135Œ"2Complete the task associated to this TODO comment.(ÌĞïµ
+T	java:S106£"9Replace this use of System.out or System.err by a logger.(²àéÁüÿÿÿÿ
+7	java:S131À""Add a default case to this switch.(ë» s
+8	java:S131Ñ""Add a default case to this switch.(Ÿ¸ÿ§
+=	java:S131ú""Add a default case to this switch.(çÔÊ—üÿÿÿÿ
+=	java:S131£""Add a default case to this switch.(çÔÊ—üÿÿÿÿ
+=	java:S131µ""Add a default case to this switch.(çÔÊ—üÿÿÿÿ
+O	java:S106ë"9Replace this use of System.out or System.err by a logger.(ı’àˆ
+T	java:S106Ä"9Replace this use of System.out or System.err by a logger.(“²½¿øÿÿÿÿ
+O	java:S106…"9Replace this use of System.out or System.err by a logger.(•…í 
+=	java:S131ã""Add a default case to this switch.(ÿüëÚùÿÿÿÿ
+Y
+java:S3252¡"=Use static access with "org.w3c.dom.Node" for "ELEMENT_NODE".(¸‹ÿ¶úÿÿÿÿ
+C
+java:S1602ğ",Remove useless curly braces around statement(Î×ÿ‘

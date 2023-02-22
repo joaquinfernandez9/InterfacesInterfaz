@@ -37,8 +37,10 @@ public class PrincipalController {
 
     public String actualUser;
 
+    private DungeonLoaderXML
+
     @Inject
-    public PrincipalController(Instance<Object> instance) {
+    public PrincipalController(Instance<Object> instance, ) {
         this.instance = instance;
     }
 
@@ -67,11 +69,11 @@ public class PrincipalController {
     }
 
 
-    public void onLoginDone(String user) {
-        actualUser = user;
-        menu.setVisible(true);
-        cargarPantalla(Screens.MENU);
-    }
+//    public void onLoginDone(String user) {
+//        actualUser = user;
+//        menu.setVisible(true);
+//        cargarPantalla(Screens.MENU);
+//    }
 
 
     public void initialize() {
@@ -108,12 +110,46 @@ public class PrincipalController {
         primaryStage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
     }
 
-    public void backToLogin() {
-        menu.setVisible(false);
-        cargarPantalla(Screens.LOGIN);
+    public void pausar(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Pausar");
+        alert.setHeaderText("Pausar");
+        alert.setContentText("El Juego esta en pausa");
+        alert.showAndWait();
     }
 
-    public void backToWelcome() {
-        cargarPantalla(Screens.MENU);
+    public void guardar(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Guardar");
+        alert.setHeaderText("Guardar");
+        alert.setContentText("El Juego se ha guardado");
+        alert.showAndWait();
     }
+
+    public void salir(ActionEvent actionEvent) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salir");
+            alert.setHeaderText("Salir");
+            alert.setContentText("¿Estas seguro que quieres salir?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Platform.exit();
+            }
+        });
+    }
+
+    public void menuPrincipal(ActionEvent actionEvent) {
+        cargarPantalla(Screens.PANTALLA_CARGA);
+    }
+
+
+//    public void backToLogin() {
+//        menu.setVisible(false);
+//        cargarPantalla(Screens.LOGIN);
+//    }
+//
+//    public void backToWelcome() {
+//        cargarPantalla(Screens.MENU);
+//    }
 }
