@@ -3,7 +3,8 @@ package ui.common;
 public enum Screens {
     PANTALLA_CARGA("/fxml/hello-view.fxml"),
     CASA_MAGO("/fxml/casa_mago.fxml"),
-    MAZMORRA("/fxml/mazmorra.fxml"),;
+    MAZMORRA("/fxml/mazmorra.fxml"),
+    ALMACEN("/fxml/inventario_objetos.fxml"),;
 
     private String ruta;
     Screens(String ruta) {

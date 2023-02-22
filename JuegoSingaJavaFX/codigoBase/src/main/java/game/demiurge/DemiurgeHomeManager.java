@@ -46,7 +46,8 @@ public class DemiurgeHomeManager {
 
     public void enterHome(){ containerManager.setSite(home.getContainer()); }
 
-    //dormir?
+
+    //preguntar si se puede recuperar desde cualqueir sitio o solo desde la casa
     public void recover(int points) throws HomeNotEnoughSingaException, WizardTiredException, ValueOverMaxException {
         if (points * dc.getSingaPerLifePointCost() > home.getSinga()) {
             throw new HomeNotEnoughSingaException();

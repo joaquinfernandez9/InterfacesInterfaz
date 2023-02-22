@@ -63,9 +63,9 @@
             <Font name="Candara" size="15.0" />
         </font>
     </Label>
-    <Label fx:id="tiempo" layoutX="56.0" layoutY="35.0" text="Tiempo:" textFill="WHITE">
+    <Label fx:id="dia" layoutX="56.0" layoutY="35.0" text="Dia:" textFill="WHITE">
         <font>
-            <Font name="Candara" size="15.0" />
+            <Font name="Candara" size="45.0" />
         </font>
     </Label>
    <Button layoutX="944.0" layoutY="187.0" mnemonicParsing="false" onAction="#abrirAlmacen" opacity="0.0" prefHeight="118.0" prefWidth="141.0" text="Almacen de objetos" />
@@ -74,6 +74,7 @@
    <Button layoutX="370.0" layoutY="310.0" mnemonicParsing="false" onAction="#aprenderHechizo" opacity="0" prefHeight="90.0" prefWidth="153.0" text="Aprender hechizo" />
    <Button layoutX="678.0" layoutY="284.0" mnemonicParsing="false" onAction="#zzz" opacity="0.0" prefHeight="90.0" prefWidth="100.0" text="Dormir" />
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-   <ListView fx:id="listaHechizos" layoutX="370.0" layoutY="404.0" prefHeight="286.0" prefWidth="153.0" />
+   <ListView fx:id="listaHechizos" layoutX="370.0" layoutY="404.0" prefHeight="286.0" prefWidth="153.0" styleClass="view" />
+   <Button layoutX="817.0" layoutY="591.0" mnemonicParsing="false" text="Ir a la mazmorra" onAction="#irMazmorra" />
 
 </AnchorPane>

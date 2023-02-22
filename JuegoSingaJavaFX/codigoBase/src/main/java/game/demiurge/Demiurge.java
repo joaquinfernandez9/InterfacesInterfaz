@@ -6,16 +6,33 @@ import game.conditions.Condition;
 import game.conditions.SimpleCondition;
 import game.dungeon.Dungeon;
 import game.dungeon.Home;
+import game.objectContainer.CrystalCarrier;
+import game.objectContainer.JewelryBag;
+import game.objectContainer.Wearables;
 
 public class Demiurge {
     private int day = 0;
     private Dungeon dungeon;
     private Home home;
+
+
+//    quitar esto
+//    Wearables wearables = new Wearables(1,2,3);
+//    CrystalCarrier carrier = new CrystalCarrier(1);
+//    JewelryBag bag = new JewelryBag(1);
+//    private Wizard wizard = new Wizard("Pepe", 10, 100, 9999, 10000, wearables, carrier, bag);
     private Wizard wizard;
 
     DungeonConfiguration dungeonConfiguration = new DungeonConfiguration();
+
+
+//    y esto
+//    DemiurgeHomeManager homeManager = new DemiurgeHomeManager(dungeonConfiguration, wizard, home, containerManager);
     DemiurgeHomeManager homeManager;
+
     DemiurgeContainerManager containerManager;
+
+
     DemiurgeDungeonManager dungeonManager;
     DemiurgeEndChecker endChecker;
 
