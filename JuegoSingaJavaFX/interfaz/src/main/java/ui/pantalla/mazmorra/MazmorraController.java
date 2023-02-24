@@ -1,6 +1,7 @@
 package ui.pantalla.mazmorra;
 
 import game.actions.Attack;
+import game.character.Creature;
 import game.character.Wizard;
 import game.character.exceptions.CharacterKilledException;
 import game.character.exceptions.WizardNotEnoughEnergyException;
@@ -50,17 +51,16 @@ public class MazmorraController extends BaseScreenController {
 
     private Room roomActual;
     private Wizard wizard;
+    private Creature creature;
 
     private int buttonSize = 50;
 
     @Override
     public void principalCargado() {
         super.principalCargado();
-        roomActual = getPrincipalController().getDemiurge().getDungeon().getRoom(0);
         wizard = getPrincipalController().getDemiurge().getWizard();
-
-        loadRoom(roomActual);
-
+        setEmptyRoom();
+        loadRoom(getPrincipalController().getDemiurge().getDungeon().getRoom(0));
         setLogMazmorra(logMazmorra);
 
         vida.setText(wizard.getLife() + "/");
@@ -90,14 +90,16 @@ public class MazmorraController extends BaseScreenController {
 
     private void loadRoom(Room room) {
         roomActual = room;
-        setEmptyRoom();
+        vida.setText(getPrincipalController().getDemiurge().getWizard().getLife() + "");
+        energia.setText(getPrincipalController().getDemiurge().getWizard().getEnergy() + "");
+
         setPuertas(room);
         roomGridPane.getChildren().forEach((Node node) -> {
             int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
             int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
             if (node instanceof Button button) {
                 setMago(rowIndex, columnIndex, button);
-                setEnemigo(room, rowIndex, columnIndex, button);
+                setEnemigo(rowIndex, columnIndex, button);
                 setCofre(room, rowIndex, columnIndex, button);
                 setCrystalFarm(room, rowIndex, columnIndex, button);
             }
@@ -204,67 +206,81 @@ public class MazmorraController extends BaseScreenController {
         }
     }
 
-    private void setEnemigo(Room room, int rowIndex, int columnIndex, Button button) {
-        if (room.isAlive() && rowIndex == 3 && columnIndex == 3) {
-            Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
-            ImageView imgView = new ImageView(enemigo);
-            imgView.setFitWidth(buttonSize);
-            imgView.setFitHeight(buttonSize);
-            button.setDisable(false);
-            button.setGraphic(imgView);
+    private void setEnemigo(int rowIndex, int columnIndex, Button button) {
+        //cuando el enemigo muere, lo que se quedan es el cadaver, pero al irse de la habitacion desaparecerá
+        if (roomActual.isAlive() && rowIndex == 3 && columnIndex == 3) {
+            if (roomActual.getCreature().getLife() > 0) {
+                Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
+                ImageView imgView = new ImageView(enemigo);
+                imgView.setFitWidth(buttonSize);
+                imgView.setFitHeight(buttonSize);
+                button.setDisable(false);
+                button.setGraphic(imgView);
 
-            //TODO setOnClickListener al usarlo te tendrias que pegar
-            getPrincipalController().getDemiurge().getDungeonManager().setCreature(room.getCreature());
-            button.setOnAction(actionEvent -> {
-                if (roomActual.isAlive() && tipoAtaque.getValue() != null
-                        && wizard.getLife() > 0 && wizard.getEnergy() > 1) {
-                    try {
-                        getPrincipalController().getDemiurge().getDungeonManager().wizardAttack((Attack) tipoAtaque.getValue());
-                    } catch (CharacterKilledException | WizardNotEnoughEnergyException | WizardTiredException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
-                        getPrincipalController().getDemiurge().getDungeonManager().creatureAttack();
-                    } catch (CharacterKilledException e) {
-                        throw new RuntimeException(e);
-                    }
-                    if (roomActual.getCreature().getLife() <= 0) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Lucha");
-                        alert.setHeaderText("Ataque hecho");
-                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
-                                " y tu tienes " + wizard.getLife() + " de vida");
-                    } else if (wizard.getLife() <= 0) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Lucha");
-                        alert.setHeaderText("Has muerto");
-                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
-                                " y tu tienes " + wizard.getLife() + " de vida");
-                    } else if (roomActual.getCreature().getLife() <= 0) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Lucha");
-                        alert.setHeaderText("Has ganado");
-                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
-                                " y tu tienes " + wizard.getLife() + " de vida");
-
-                    }
-                } else if (!roomActual.isAlive() || roomActual.getCreature().getLife() <= 0) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Lucha");
-                    alert.setHeaderText("No hay enemigo");
-                    alert.setContentText("Esta sala no tiene enemigos");
-                } else if (wizard.getEnergy() <= 1) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Lucha");
-                    alert.setHeaderText("No tienes energia");
-                    alert.setContentText("No tienes energia para atacar");
-                } else {
+                //setOnClickListener al usarlo te tendrias que pegar
+                getPrincipalController().getDemiurge().getDungeonManager().setCreature(roomActual.getCreature());
+                button.setOnAction(actionEvent -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Lucha");
                     alert.setHeaderText("No has seleccionado un tipo de ataque");
                     alert.setContentText("Selecciona un tipo de ataque");
-                }
-            });
+
+                    if (roomActual.isAlive() && tipoAtaque.getValue() != null
+                            && wizard.getLife() > 0 && wizard.getEnergy() > 1) {
+                        try {
+                            getPrincipalController().getDemiurge().getDungeonManager().wizardAttack((Attack) tipoAtaque.getValue());
+                        } catch (CharacterKilledException | WizardNotEnoughEnergyException | WizardTiredException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        try {
+                            getPrincipalController().getDemiurge().getDungeonManager().creatureAttack();
+                        } catch (CharacterKilledException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        if (roomActual.getCreature().getLife() >= 0) {
+                            alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Lucha");
+                            alert.setHeaderText("Ataque hecho");
+                            alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                    " y tu tienes " + wizard.getLife() + " de vida");
+                        } else if (wizard.getLife() <= 0) {
+                            alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Lucha");
+                            alert.setHeaderText("Has muerto");
+                            alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                    " y tu tienes " + wizard.getLife() + " de vida");
+                        } else if (roomActual.getCreature().getLife() <= 0) {
+                            alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Lucha");
+                            alert.setHeaderText("Has ganado");
+                            alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                    " y tu tienes " + wizard.getLife() + " de vida");
+
+                        }
+                    } else if (!roomActual.isAlive() || roomActual.getCreature().getLife() <= 0) {
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Lucha");
+                        alert.setHeaderText("No hay enemigo");
+                        alert.setContentText("Esta sala no tiene enemigos");
+                    } else if (wizard.getEnergy() <= 1) {
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Lucha");
+                        alert.setHeaderText("No tienes energia");
+                        alert.setContentText("No tienes energia para atacar");
+                    }
+                    alert.showAndWait();
+                    loadRoom(roomActual);
+                });
+            }else{
+                Image suelo = new Image(getClass().getResourceAsStream("/img/suelo.jpg"));
+                ImageView imgView = new ImageView(suelo);
+                imgView.setFitWidth(buttonSize);
+                imgView.setFitHeight(buttonSize);
+                button.setDisable(true);
+                button.setGraphic(imgView);
+            }
         }
     }
 
@@ -281,15 +297,6 @@ public class MazmorraController extends BaseScreenController {
             button.setOnAction(actionEvent -> {
                 //TODO setOnClickListener al usarlo se abre el cofre
                 // (en el lateral o un alert con una lista de los objetos que hay dentro y tu inventario y un boton para mover los objetos seleccionados a la otra tabla)
-                getPrincipalController().getDemiurge().getDungeonManager().gatherCrystals();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Cristales");
-                if (!getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().isFull()) {
-                    alert.setContentText("Has recogido los cristales:");
-                } else {
-                    alert.setContentText("Tu mochila esta llena, no puedes recoger mas cristales");
-                }
-                alert.showAndWait();
             });
         }
     }
@@ -303,7 +310,7 @@ public class MazmorraController extends BaseScreenController {
             button.setDisable(false);
             button.setGraphic(imgView);
 
-            //TODO setOnClickListener al usarlo se recogen los cristales (salta un alert con los cristales que se han recogido
+            //setOnClickListener al usarlo se recogen los cristales (salta un alert con los cristales que se han recogido
             button.setOnAction((ActionEvent event) -> {
                 getPrincipalController().getDemiurge().getDungeonManager().gatherCrystals();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
