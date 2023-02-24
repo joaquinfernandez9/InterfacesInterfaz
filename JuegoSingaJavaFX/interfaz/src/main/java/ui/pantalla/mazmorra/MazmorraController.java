@@ -104,6 +104,8 @@ public class MazmorraController extends BaseScreenController {
                 setCrystalFarm(room, rowIndex, columnIndex, button);
             }
         });
+        logMazmorra.setText("Has entrado en la habitación " + room.getID() + ".\n");
+        setLogMazmorra(logMazmorra);
     }
 
     private void setEmptyRoom() {
@@ -187,6 +189,8 @@ public class MazmorraController extends BaseScreenController {
                 //end game
                 getPrincipalController().getDemiurge().getEndChecker().getConditions().get(0).check();
                 getPrincipalController().getDemiurge().getEndChecker().check();
+                logMazmorra.setText("Has salido de la mazmorra.\n");
+                setLogMazmorra(logMazmorra);
             }
         });
     }
@@ -232,12 +236,14 @@ public class MazmorraController extends BaseScreenController {
                         } catch (CharacterKilledException | WizardNotEnoughEnergyException | WizardTiredException e) {
                             throw new RuntimeException(e);
                         }
+                        logMazmorra.setText("Has atacado a la criatura con " + ((Attack) tipoAtaque.getValue()).getDamage() + ".\n");
 
                         try {
                             getPrincipalController().getDemiurge().getDungeonManager().creatureAttack();
                         } catch (CharacterKilledException e) {
                             throw new RuntimeException(e);
                         }
+                        logMazmorra.setText("La criatura te ha atacado con " + roomActual.getCreature().getRandomAttack().getDamage() + ".\n");
 
                         if (roomActual.getCreature().getLife() >= 0) {
                             alert = new Alert(Alert.AlertType.INFORMATION);
@@ -245,35 +251,41 @@ public class MazmorraController extends BaseScreenController {
                             alert.setHeaderText("Ataque hecho");
                             alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
                                     " y tu tienes " + wizard.getLife() + " de vida");
+                            logMazmorra.setText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                    " y tu tienes " + wizard.getLife() + " de vida");
                         } else if (wizard.getLife() <= 0) {
                             alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Lucha");
                             alert.setHeaderText("Has muerto");
                             alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
                                     " y tu tienes " + wizard.getLife() + " de vida");
+                            logMazmorra.setText("Has muerto");
                         } else if (roomActual.getCreature().getLife() <= 0) {
                             alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Lucha");
                             alert.setHeaderText("Has ganado");
                             alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
                                     " y tu tienes " + wizard.getLife() + " de vida");
-
+                            logMazmorra.setText("Has matado a la criatura");
                         }
                     } else if (!roomActual.isAlive() || roomActual.getCreature().getLife() <= 0) {
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Lucha");
                         alert.setHeaderText("No hay enemigo");
                         alert.setContentText("Esta sala no tiene enemigos");
+                        logMazmorra.setText("Esta sala no tiene enemigos");
                     } else if (wizard.getEnergy() <= 1) {
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Lucha");
                         alert.setHeaderText("No tienes energia");
                         alert.setContentText("No tienes energia para atacar");
+                        logMazmorra.setText("No tienes energia para atacar");
                     }
+                    setLogMazmorra(logMazmorra);
                     alert.showAndWait();
                     loadRoom(roomActual);
                 });
-            }else{
+            } else {
                 Image suelo = new Image(getClass().getResourceAsStream("/img/suelo.jpg"));
                 ImageView imgView = new ImageView(suelo);
                 imgView.setFitWidth(buttonSize);
@@ -317,9 +329,12 @@ public class MazmorraController extends BaseScreenController {
                 alert.setTitle("Cristales");
                 if (!getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().isFull()) {
                     alert.setContentText("Has recogido los cristales:");
+                    logMazmorra.setText("Has recogido los cristales:");
                 } else {
                     alert.setContentText("Tu mochila esta llena, no puedes recoger mas cristales");
+                    logMazmorra.setText("Tu mochila esta llena, no puedes recoger mas cristales");
                 }
+                setLogMazmorra(logMazmorra);
                 alert.showAndWait();
             });
         }

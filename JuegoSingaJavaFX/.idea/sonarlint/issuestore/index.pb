@@ -41,5 +41,3 @@ n
 >codigoBase/src/main/java/game/demiurge/DemiurgeEndChecker.java,c\7\c74000a3fe5d86e5d53abdfaf8803ec36e303500
 k
 ;interfaz/src/main/java/ui/pantalla/menu/MenuController.java,5\5\55dce8b9d10590c56ef6d7916e1b021ac799a542
-s
-Cinterfaz/src/main/java/ui/pantalla/mazmorra/MazmorraController.java,b\9\b9e6cee8ec8688e001cee8aacbca0e346634155a
