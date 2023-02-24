@@ -1,14 +1,11 @@
 package ui.pantalla.mazmorra;
 
-import game.dungeon.Door;
 import game.dungeon.Room;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
@@ -54,7 +51,8 @@ public class MazmorraController extends BaseScreenController {
     @Override
     public void principalCargado() {
         super.principalCargado();
-        setImagenes();
+        getPrincipalController().getDemiurge().getDungeon().iterator().next();
+        setEmptyRoom();
         setLogMazmorra(logMazmorra);
         setButton(atacar);
         setButton(hechizos);
@@ -71,53 +69,6 @@ public class MazmorraController extends BaseScreenController {
         //en el que se ponga un cofre, abre el cofre
         //en el que se ponga el enemigo, empieza la lucha y se abre un alert con botones de los posibles ataques (pegarse o usar los hechizos)
         //en el que se ponga el mago, pues busca objetos y le salga un alert con una lista de los objetos(que puedas seleccionar varios) y un boton de recoger
-
-        //que la vida y la energia se muestren como barras de colores y debajo un boton cuadrado con un icono que te abra su inventario
-    }
-
-    private void setImagenes() {
-        Random random = new Random();
-        Image mago = new Image(getClass().getResourceAsStream("/img/Mago.jpg"));
-        Image muro = new Image(getClass().getResourceAsStream("/img/Muro.jpg"));
-        Image suelo1 = new Image(getClass().getResourceAsStream("/img/Suelo1.jpg"));
-        Image suelo2 = new Image(getClass().getResourceAsStream("/img/Suelo2.jpg"));
-        Image suelo3 = new Image(getClass().getResourceAsStream("/img/Suelo3.jpg"));
-
-        //pinta vacia la habitacion
-        roomGridPane.getChildren().forEach((Node node) -> {
-            int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
-            int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
-
-            if (node instanceof Button button) {
-                ImageView imgView = new ImageView(muro);
-                if ((rowIndex >= 1 && rowIndex <= 5) && (columnIndex >= 1 && columnIndex <= 5)) {
-                    switch (random.nextInt(3)) {
-                        case 0 -> imgView = new ImageView(suelo1);
-                        case 1 -> imgView = new ImageView(suelo2);
-                        case 2 -> imgView = new ImageView(suelo3);
-                    }
-                    if (rowIndex == 3 && columnIndex == 3) {
-                        imgView = new ImageView(mago);
-                    }
-                }
-                imgView.setFitWidth(buttonSize);
-                imgView.setFitHeight(buttonSize);
-                button.setGraphic(imgView);
-                button.setDisable(true);
-                button.setOpacity(100);
-                button.setPadding(Insets.EMPTY);
-                button.setBorder(Border.EMPTY);
-                button.setContentDisplay(ContentDisplay.CENTER);
-                button.setStyle("-fx-background-color: transparent");
-            }
-        });
-        //segun la room, pintar en los distintas posiciones las imagenes que toquen ademas de agregarle la accion al boton
-        //para eso, le tiene que llegar una room a esta funcion y a la funcion del principal controller le tiene que llegar el Demiurge
-    }
-
-    private void setLogMazmorra(TextArea textArea) {
-        textArea.setStyle("-fx-background-color: #464b82");
-        textArea.setStyle("-fx-text-fill: #f3d3ac");
     }
 
     private void setButton(Button bt) {
@@ -132,56 +83,126 @@ public class MazmorraController extends BaseScreenController {
         bt.setStyle("-fx-background-color: transparent");
     }
 
+    private void setLogMazmorra(TextArea textArea) {
+        textArea.setStyle("-fx-background-color: #464b82");
+        textArea.setStyle("-fx-text-fill: #f3d3ac");
+    }
+
+    private void setEmptyRoom() {
+        Random random = new Random();
+        Image muro = new Image(getClass().getResourceAsStream("/img/Muro.jpg"));
+        Image suelo1 = new Image(getClass().getResourceAsStream("/img/Suelo1.jpg"));
+        Image suelo2 = new Image(getClass().getResourceAsStream("/img/Suelo2.jpg"));
+        Image suelo3 = new Image(getClass().getResourceAsStream("/img/Suelo3.jpg"));
+
+        roomGridPane.getChildren().forEach((Node node) -> {
+            int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
+            int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+
+            if (node instanceof Button button) {
+                ImageView imgView = new ImageView(muro);
+                if ((rowIndex >= 1 && rowIndex <= 5) && (columnIndex >= 1 && columnIndex <= 5)) {
+                    switch (random.nextInt(3)) {
+                        case 0 -> imgView = new ImageView(suelo1);
+                        case 1 -> imgView = new ImageView(suelo2);
+                        case 2 -> imgView = new ImageView(suelo3);
+                    }
+                }
+                imgView.setFitWidth(buttonSize);
+                imgView.setFitHeight(buttonSize);
+                button.setGraphic(imgView);
+                button.setDisable(true);
+                button.setOpacity(100);
+                button.setPadding(Insets.EMPTY);
+                button.setBorder(Border.EMPTY);
+                button.setContentDisplay(ContentDisplay.CENTER);
+                button.setStyle("-fx-background-color: transparent");
+            }
+        });
+    }
+
     private void loadRoom(Room room) {
         roomGridPane.getChildren().forEach((Node node) -> {
             int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
             int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
             if (node instanceof Button button) {
-                if (room.isAlive() && rowIndex == 3 && columnIndex == 3) {
-                    Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
-                    ImageView imgView = new ImageView(enemigo);
-                    imgView.setFitWidth(buttonSize);
-                    imgView.setFitHeight(buttonSize);
-                    button.setDisable(false);
-                    button.setGraphic(imgView);
-
-                    //TODO setOnClickListener al usarlo se empieza la lucha
-                }
-
-                if (room.isEmpty() && rowIndex == 1 && columnIndex == 5) {
-                    Image crystalFarm = new Image(getClass().getResourceAsStream("/img/CrystalFarm.jpg"));
-                    ImageView imgView = new ImageView(crystalFarm);
-                    imgView.setFitWidth(buttonSize);
-                    imgView.setFitHeight(buttonSize);
-                    button.setDisable(false);
-                    button.setGraphic(imgView);
-
-                    //TODO setOnClickListener al usarlo se recogen los cristales (salta un alert con los cristales que se han recogido
-                }
-
-                if (room.getContainer().isEmpty() && rowIndex == 1 && columnIndex == 1) {
-                    Image cofre = new Image(getClass().getResourceAsStream("/img/Cofre.jpg"));
-                    ImageView imgView = new ImageView(cofre);
-                    imgView.setFitWidth(buttonSize);
-                    imgView.setFitHeight(buttonSize);
-                    button.setDisable(false);
-                    button.setGraphic(imgView);
-
-                    //TODO setOnClickListener al usarlo se abre el cofre
-                    // (en el lateral oo un alert con una lista de los objetos que hay dentro y tu inventario y un boton para mover los objetos seleccionados a la otra tabla)
-                }
+                setMago(rowIndex, columnIndex, button);
+                setEnemigo(room, rowIndex, columnIndex, button);
+                setCofre(room, rowIndex, columnIndex, button);
+                setCrystalFarm(room, rowIndex, columnIndex, button);
             }
         });
+        //TODO cargar las puertas de la habitacion
+    }
 
-        room.iterator().forEachRemaining((Door door) -> {
-            if (door.isUsed()){
-                Image puertaAbierta = new Image(getClass().getResourceAsStream("/img/PuertaAbierta.jpg"));
+    private void setMago(int rowIndex, int columnIndex, Button button){
+        if (rowIndex == 4 && columnIndex == 3) {
+            Image mago = new Image(getClass().getResourceAsStream("/img/Mago.jpg"));
+            ImageView imgView = new ImageView(mago);
+            imgView.setFitWidth(buttonSize);
+            imgView.setFitHeight(buttonSize);
+            button.setDisable(false);
+            button.setGraphic(imgView);
 
-            }else{
-                Image puertaCerrada = new Image(getClass().getResourceAsStream("/img/Puerta.jpg"));
+            //TODO setOnClickListener al usarlo se abre el inventario o algo
+            button.setOnAction(actionEvent -> {
 
-            }
-        });
+            });
+        }
+    }
+
+    private void setEnemigo(Room room, int rowIndex, int columnIndex, Button button){
+        if (room.isAlive() && rowIndex == 3 && columnIndex == 3) {
+            Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
+            ImageView imgView = new ImageView(enemigo);
+            imgView.setFitWidth(buttonSize);
+            imgView.setFitHeight(buttonSize);
+            button.setDisable(false);
+            button.setGraphic(imgView);
+
+            //TODO setOnClickListener al usarlo se empieza la lucha
+            button.setOnAction(actionEvent -> {
+
+            });
+        }
+    }
+
+    private void setCofre(Room room, int rowIndex, int columnIndex, Button button){
+        if (room.getContainer().isEmpty() && rowIndex == 1 && columnIndex == 1) {
+            Image cofre = new Image(getClass().getResourceAsStream("/img/Cofre.jpg"));
+            ImageView imgView = new ImageView(cofre);
+            imgView.setFitWidth(buttonSize);
+            imgView.setFitHeight(buttonSize);
+            button.setDisable(false);
+            button.setGraphic(imgView);
+
+            //TODO setOnClickListener al usarlo se abre el cofre
+            // (en el lateral o un alert con una lista de los objetos que hay dentro y tu inventario y un boton para mover los objetos seleccionados a la otra tabla)
+        }
+    }
+
+    private void setCrystalFarm(Room room, int rowIndex, int columnIndex, Button button){
+        if (room.isEmpty() && rowIndex == 1 && columnIndex == 5) {
+            Image crystalFarm = new Image(getClass().getResourceAsStream("/img/CrystalFarm.jpg"));
+            ImageView imgView = new ImageView(crystalFarm);
+            imgView.setFitWidth(buttonSize);
+            imgView.setFitHeight(buttonSize);
+            button.setDisable(false);
+            button.setGraphic(imgView);
+
+            //TODO setOnClickListener al usarlo se recogen los cristales (salta un alert con los cristales que se han recogido
+            button.setOnAction((ActionEvent event) -> {
+                getPrincipalController().getDemiurge().getDungeonManager().gatherCrystals();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Cristales");
+                if (!getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().isFull()) {
+                    alert.setContentText("Has recogido los cristales:");
+                }else {
+                    alert.setContentText("Tu mochila esta llena, no puedes recoger mas cristales");
+                }
+                alert.showAndWait();
+            });
+        }
     }
 }
 
