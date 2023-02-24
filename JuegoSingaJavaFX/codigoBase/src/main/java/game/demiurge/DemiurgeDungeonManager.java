@@ -159,4 +159,8 @@ public class DemiurgeDungeonManager {
         return false;
     }
 
+    public void setCreature(Creature roomCreature) {
+        creature = roomCreature;
+    }
+
 }

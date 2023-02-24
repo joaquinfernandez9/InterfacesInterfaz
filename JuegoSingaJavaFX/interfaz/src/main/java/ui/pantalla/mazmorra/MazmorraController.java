@@ -1,6 +1,13 @@
 package ui.pantalla.mazmorra;
 
+import game.actions.Attack;
+import game.character.Wizard;
+import game.character.exceptions.CharacterKilledException;
+import game.character.exceptions.WizardNotEnoughEnergyException;
+import game.character.exceptions.WizardTiredException;
+import game.dungeon.Door;
 import game.dungeon.Room;
+import game.dungeon.Site;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -11,64 +18,57 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import ui.common.BaseScreenController;
+import ui.common.Screens;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MazmorraController extends BaseScreenController {
     @FXML
-    private Label tiempo;
+    private Label vida;
     @FXML
-    private Label vidaMago;
+    private Label vidaMax;
     @FXML
-    private Label energiaMago;
+    private Label energia;
     @FXML
-    private Label cristalesMago;
+    private Label energiaMax;
     @FXML
     private GridPane roomGridPane;
     @FXML
-    private Button r0c3;
+    private Button norte;
     @FXML
-    private Button r3c0;
+    private Button este;
     @FXML
-    private Button r3c6;
+    private Button oeste;
     @FXML
-    private Button r6c3;
+    private Button sur;
     @FXML
     private TextArea logMazmorra;
     @FXML
-    private Button atacar;
-    @FXML
-    private Button hechizos;
-    @FXML
-    private Button huir;
-    @FXML
-    private Button buscarObjetos;
-    @FXML
-    private Button recogerObjetos;
-    private int buttonSize = 50;
+    private ComboBox tipoAtaque;
 
+    private Room roomActual;
+    private Wizard wizard;
+
+    private int buttonSize = 50;
 
     @Override
     public void principalCargado() {
         super.principalCargado();
-        getPrincipalController().getDemiurge().getDungeon().iterator().next();
-        setEmptyRoom();
+        roomActual = getPrincipalController().getDemiurge().getDungeon().getRoom(0);
+        wizard = getPrincipalController().getDemiurge().getWizard();
+
+        loadRoom(roomActual);
+
         setLogMazmorra(logMazmorra);
-        setButton(atacar);
-        setButton(hechizos);
-        setButton(huir);
-        setButton(buscarObjetos);
-        setButton(recogerObjetos);
 
-        //TODO al cancelar el cargar la mazmorra se  cancela la carga de la pantalla xq si no sale un nullpointer
+        vida.setText(wizard.getLife() + "/");
+        vidaMax.setText(wizard.getLifeMax() + "");
+        energia.setText(wizard.getEnergy() + "/");
+        energiaMax.setText(wizard.getEnergyMax() + "");
 
-        //fondos de https://www.artstation.com/artwork/VdErn4
-        //cargar las imagenes que toquen y activar las funciones de los botones segun la habitacion en la que esté
-        //en los que se pongan muros/suelos se desactivan
-        //en los que se pongan puertas, te envie a la habitacion en esa direccion
-        //en el que se ponga un cofre, abre el cofre
-        //en el que se ponga el enemigo, empieza la lucha y se abre un alert con botones de los posibles ataques (pegarse o usar los hechizos)
-        //en el que se ponga el mago, pues busca objetos y le salga un alert con una lista de los objetos(que puedas seleccionar varios) y un boton de recoger
+        getPrincipalController().getDemiurge().getDungeonManager().getAttacksIterator().forEachRemaining(attack -> tipoAtaque.getItems().add(attack));
     }
 
     private void setButton(Button bt) {
@@ -86,6 +86,22 @@ public class MazmorraController extends BaseScreenController {
     private void setLogMazmorra(TextArea textArea) {
         textArea.setStyle("-fx-background-color: #464b82");
         textArea.setStyle("-fx-text-fill: #f3d3ac");
+    }
+
+    private void loadRoom(Room room) {
+        roomActual = room;
+        setEmptyRoom();
+        setPuertas(room);
+        roomGridPane.getChildren().forEach((Node node) -> {
+            int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
+            int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+            if (node instanceof Button button) {
+                setMago(rowIndex, columnIndex, button);
+                setEnemigo(room, rowIndex, columnIndex, button);
+                setCofre(room, rowIndex, columnIndex, button);
+                setCrystalFarm(room, rowIndex, columnIndex, button);
+            }
+        });
     }
 
     private void setEmptyRoom() {
@@ -121,21 +137,59 @@ public class MazmorraController extends BaseScreenController {
         });
     }
 
-    private void loadRoom(Room room) {
-        roomGridPane.getChildren().forEach((Node node) -> {
-            int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
-            int columnIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
-            if (node instanceof Button button) {
-                setMago(rowIndex, columnIndex, button);
-                setEnemigo(room, rowIndex, columnIndex, button);
-                setCofre(room, rowIndex, columnIndex, button);
-                setCrystalFarm(room, rowIndex, columnIndex, button);
-            }
+    private void setPuertas(Room room) {
+        List<Site> connectedSites = new ArrayList<>();
+        //carga la lista de las habitaciones conectadas
+        room.iterator().forEachRemaining(door ->
+                connectedSites.add(door.showFrom(room))
+        );
+
+        //la primera puerta va a ser la puerta del norte, la segunda la del este, la tercera la del sur y la cuarta la del oeste
+        //si hay mas de 4 puertas, no se cargan, es lo que hay
+        //Ya que en el xml no tienen ningun orden
+        room.iterator().forEachRemaining(door -> {
+            if (connectedSites.get(0).equals(door.showFrom(room)))
+                setPuerta(door, norte);
+            else if (connectedSites.get(1).equals(door.showFrom(room)))
+                setPuerta(door, este);
+            else if (connectedSites.get(2).equals(door.showFrom(room)))
+                setPuerta(door, sur);
+            else if (connectedSites.get(3).equals(door.showFrom(room)))
+                setPuerta(door, oeste);
         });
-        //TODO cargar las puertas de la habitacion
     }
 
-    private void setMago(int rowIndex, int columnIndex, Button button){
+    private void setPuerta(Door door, Button button) {
+        Image puerta;
+        if (door.isUsed())
+            puerta = new Image(getClass().getResourceAsStream("/img/PuertaAbierta.jpg"));
+        else
+            puerta = new Image(getClass().getResourceAsStream("/img/Puerta.jpg"));
+
+        ImageView imgView = new ImageView(puerta);
+        imgView.setFitWidth(buttonSize);
+        imgView.setFitHeight(buttonSize);
+        button.setDisable(false);
+        button.setGraphic(imgView);
+
+        button.setOnAction(actionEvent -> {
+            Site roomNueva = door.openFrom(roomActual);
+            if (!roomNueva.isExit()) {
+                if (roomNueva.getID() == -1) {
+                    getPrincipalController().getDemiurge().getHomeManager().enterHome();
+                    getPrincipalController().cargarPantalla(Screens.CASA_MAGO);
+                } else {
+                    loadRoom((Room) roomNueva);
+                }
+            } else {
+                //end game
+                getPrincipalController().getDemiurge().getEndChecker().getConditions().get(0).check();
+                getPrincipalController().getDemiurge().getEndChecker().check();
+            }
+        });
+    }
+
+    private void setMago(int rowIndex, int columnIndex, Button button) {
         if (rowIndex == 4 && columnIndex == 3) {
             Image mago = new Image(getClass().getResourceAsStream("/img/Mago.jpg"));
             ImageView imgView = new ImageView(mago);
@@ -144,14 +198,13 @@ public class MazmorraController extends BaseScreenController {
             button.setDisable(false);
             button.setGraphic(imgView);
 
-            //TODO setOnClickListener al usarlo se abre el inventario o algo
             button.setOnAction(actionEvent -> {
-
+                //TODO setOnClickListener al usarlo se abre el inventario o algo
             });
         }
     }
 
-    private void setEnemigo(Room room, int rowIndex, int columnIndex, Button button){
+    private void setEnemigo(Room room, int rowIndex, int columnIndex, Button button) {
         if (room.isAlive() && rowIndex == 3 && columnIndex == 3) {
             Image enemigo = new Image(getClass().getResourceAsStream("/img/Enemigo.jpg"));
             ImageView imgView = new ImageView(enemigo);
@@ -160,14 +213,63 @@ public class MazmorraController extends BaseScreenController {
             button.setDisable(false);
             button.setGraphic(imgView);
 
-            //TODO setOnClickListener al usarlo se empieza la lucha
+            //TODO setOnClickListener al usarlo te tendrias que pegar
+            getPrincipalController().getDemiurge().getDungeonManager().setCreature(room.getCreature());
             button.setOnAction(actionEvent -> {
+                if (roomActual.isAlive() && tipoAtaque.getValue() != null
+                        && wizard.getLife() > 0 && wizard.getEnergy() > 1) {
+                    try {
+                        getPrincipalController().getDemiurge().getDungeonManager().wizardAttack((Attack) tipoAtaque.getValue());
+                    } catch (CharacterKilledException | WizardNotEnoughEnergyException | WizardTiredException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        getPrincipalController().getDemiurge().getDungeonManager().creatureAttack();
+                    } catch (CharacterKilledException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if (roomActual.getCreature().getLife() <= 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Lucha");
+                        alert.setHeaderText("Ataque hecho");
+                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                " y tu tienes " + wizard.getLife() + " de vida");
+                    } else if (wizard.getLife() <= 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Lucha");
+                        alert.setHeaderText("Has muerto");
+                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                " y tu tienes " + wizard.getLife() + " de vida");
+                    } else if (roomActual.getCreature().getLife() <= 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Lucha");
+                        alert.setHeaderText("Has ganado");
+                        alert.setContentText("La criatura tiene " + roomActual.getCreature().getLife() + " de vida," +
+                                " y tu tienes " + wizard.getLife() + " de vida");
 
+                    }
+                } else if (!roomActual.isAlive() || roomActual.getCreature().getLife() <= 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Lucha");
+                    alert.setHeaderText("No hay enemigo");
+                    alert.setContentText("Esta sala no tiene enemigos");
+                } else if (wizard.getEnergy() <= 1) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Lucha");
+                    alert.setHeaderText("No tienes energia");
+                    alert.setContentText("No tienes energia para atacar");
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Lucha");
+                    alert.setHeaderText("No has seleccionado un tipo de ataque");
+                    alert.setContentText("Selecciona un tipo de ataque");
+                }
             });
         }
     }
 
-    private void setCofre(Room room, int rowIndex, int columnIndex, Button button){
+    private void setCofre(Room room, int rowIndex, int columnIndex, Button button) {
+        //esto se carga, si los objetos que hay dentro de una habitacion se cargasen en el container que tiene un Site
         if (room.getContainer().isEmpty() && rowIndex == 1 && columnIndex == 1) {
             Image cofre = new Image(getClass().getResourceAsStream("/img/Cofre.jpg"));
             ImageView imgView = new ImageView(cofre);
@@ -176,12 +278,23 @@ public class MazmorraController extends BaseScreenController {
             button.setDisable(false);
             button.setGraphic(imgView);
 
-            //TODO setOnClickListener al usarlo se abre el cofre
-            // (en el lateral o un alert con una lista de los objetos que hay dentro y tu inventario y un boton para mover los objetos seleccionados a la otra tabla)
+            button.setOnAction(actionEvent -> {
+                //TODO setOnClickListener al usarlo se abre el cofre
+                // (en el lateral o un alert con una lista de los objetos que hay dentro y tu inventario y un boton para mover los objetos seleccionados a la otra tabla)
+                getPrincipalController().getDemiurge().getDungeonManager().gatherCrystals();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Cristales");
+                if (!getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().isFull()) {
+                    alert.setContentText("Has recogido los cristales:");
+                } else {
+                    alert.setContentText("Tu mochila esta llena, no puedes recoger mas cristales");
+                }
+                alert.showAndWait();
+            });
         }
     }
 
-    private void setCrystalFarm(Room room, int rowIndex, int columnIndex, Button button){
+    private void setCrystalFarm(Room room, int rowIndex, int columnIndex, Button button) {
         if (room.isEmpty() && rowIndex == 1 && columnIndex == 5) {
             Image crystalFarm = new Image(getClass().getResourceAsStream("/img/CrystalFarm.jpg"));
             ImageView imgView = new ImageView(crystalFarm);
@@ -197,7 +310,7 @@ public class MazmorraController extends BaseScreenController {
                 alert.setTitle("Cristales");
                 if (!getPrincipalController().getDemiurge().getWizard().getCrystalCarrier().isFull()) {
                     alert.setContentText("Has recogido los cristales:");
-                }else {
+                } else {
                     alert.setContentText("Tu mochila esta llena, no puedes recoger mas cristales");
                 }
                 alert.showAndWait();

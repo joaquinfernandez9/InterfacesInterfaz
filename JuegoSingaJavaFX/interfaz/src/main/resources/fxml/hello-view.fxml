@@ -16,7 +16,7 @@
             <Font name="Candara" size="58.0" />
         </font>
     </Label>
-    <Button layoutX="322.0" layoutY="595.0" onAction="#newGame" prefHeight="111.0" prefWidth="240.0" text="Nueva partida">
+    <Button layoutX="322.0" layoutY="595.0" onAction="#newGame" opacity="0.0" prefHeight="111.0" prefWidth="240.0" text="Nueva partida">
         <font>
             <Font size="28.0" />
         </font>

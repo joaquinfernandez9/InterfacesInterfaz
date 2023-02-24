@@ -12,31 +12,31 @@
         </font>
     </Label>
 
-    <Label fx:id="vida" layoutX="437.0" layoutY="630.0" text="Vida" textFill="#f3d3ac">
+    <Label fx:id="vida" layoutX="430.0" layoutY="685.0" text="vAct" textAlignment="RIGHT" textFill="#f3d3ac">
         <font>
-            <Font name="Candara" size="10.0" />
+            <Font name="Candara" size="12.0" />
         </font>
     </Label>
 
-    <Label fx:id="vidaMax" layoutX="437.0" layoutY="630.0" text="Vida" textFill="#f3d3ac">
+    <Label fx:id="vidaMax" layoutX="453.0" layoutY="685.0" text="/vMax" textFill="#f3d3ac">
         <font>
-            <Font name="Candara" size="10.0" />
+            <Font name="Candara" size="12.0" />
         </font>
     </Label>
     <Label fx:id="energiaMago" layoutX="803.0" layoutY="640.0" text="Energia" textFill="#f3d3ac">
         <font>
-            <Font name="Candara" size="10.0" />
+            <Font name="Candara" size="15.0" />
         </font>
     </Label>
-    <Label fx:id="energia" layoutX="803.0" layoutY="630.0" text="Vida" textFill="#f3d3ac">
+    <Label fx:id="energia" layoutX="803.0" layoutY="685.0" text="eAct" textAlignment="RIGHT" textFill="#f3d3ac">
         <font>
-            <Font name="Candara" size="10.0" />
+            <Font name="Candara" size="12.0" />
         </font>
     </Label>
 
-    <Label fx:id="energiaMax" layoutX="810.0" layoutY="630.0" text="Vida" textFill="#f3d3ac">
+    <Label fx:id="energiaMax" layoutX="827.0" layoutY="685.0" text="/eMax" textFill="#f3d3ac">
         <font>
-            <Font name="Candara" size="15.0" />
+            <Font name="Candara" size="12.0" />
         </font>
     </Label>
 
@@ -45,24 +45,15 @@
             <Font name="Candara" size="15.0" />
         </font>
     </Label>
-    <Label fx:id="tiempo" layoutX="465.0" layoutY="55.0" text="Tiempo:" textFill="#f3d3ac">
-        <font>
-            <Font name="Candara" size="15.0" />
-        </font>
-    </Label>
 
-    <ComboBox fx:id="tipoAtaque" layoutX="1020.0" layoutY="203.0" prefHeight="50.0" prefWidth="150.0" />
-    <Button fx:id="atacar" contentDisplay="CENTER" layoutX="1020.0" layoutY="275.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Atacar" textAlignment="CENTER" textFill="#f3d3ac" />
-    <Button fx:id="buscarObjetos" contentDisplay="CENTER" layoutX="1020.0" layoutY="388.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Buscar Objetos" textAlignment="CENTER" textFill="#f3d3ac" />
-    <Button fx:id="recogerObjetos" contentDisplay="CENTER" layoutX="1020.0" layoutY="462.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Recoger Objetos" textAlignment="CENTER" textFill="#f3d3ac" />
-
+    <ComboBox fx:id="tipoAtaque" layoutX="565.0" layoutY="525.0" prefHeight="50.0" prefWidth="150.0" />
     <TextArea fx:id="logMazmorra" disable="true" editable="false" layoutX="25" layoutY="125.0" opacity="0.3" prefHeight="525.0" prefWidth="350.0" />
 
     <GridPane fx:id="roomGridPane" layoutX="465.0" layoutY="150.0" prefHeight="350.0" prefWidth="350.0">
         <Button fx:id="r0c0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Button fx:id="r0c1" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         <Button fx:id="r0c2" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <Button fx:id="r0c3" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Button fx:id="norte" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
         <Button fx:id="r0c4" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
         <Button fx:id="r0c5" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="0" />
         <Button fx:id="r0c6" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="0" />
@@ -83,13 +74,13 @@
         <Button fx:id="r2c5" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
         <Button fx:id="r2c6" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
 
-        <Button fx:id="r3c0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Button fx:id="oeste" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <Button fx:id="r3c1" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Button fx:id="r3c2" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
         <Button fx:id="r3c3" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
         <Button fx:id="r3c4" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
         <Button fx:id="r3c5" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-        <Button fx:id="r3c6" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+        <Button fx:id="este" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
 
         <Button fx:id="r4c0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
         <Button fx:id="r4c1" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -110,7 +101,7 @@
         <Button fx:id="r6c0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="6" />
         <Button fx:id="r6c1" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
         <Button fx:id="r6c2" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-        <Button fx:id="r6c3" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+        <Button fx:id="sur" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
         <Button fx:id="r6c4" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
         <Button fx:id="r6c5" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
         <Button fx:id="r6c6" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />

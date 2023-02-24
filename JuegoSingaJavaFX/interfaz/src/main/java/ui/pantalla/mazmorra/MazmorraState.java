@@ -1,15 +1,19 @@
 package ui.pantalla.mazmorra;
 
+import game.character.Creature;
+import game.character.Wizard;
 import game.dungeon.Room;
-import game.dungeon.Site;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Data
 public class MazmorraState {
-    private LocalDateTime time;
-    private final Character character;
-    private final Room room;
-    private final Site site;
+    private Room room;
+    private Wizard wizard;
+    private Creature creature;
+
+    public MazmorraState(Room room, Wizard wizard, Creature creature) {
+        this.room = room;
+        this.wizard = wizard;
+        this.creature = creature;
+    }
 }

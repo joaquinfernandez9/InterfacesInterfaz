@@ -88,7 +88,6 @@ public class PrincipalController {
     @Inject
     public PrincipalController(Instance<Object> instance) {
         this.instance = instance;
-
     }
 
     public void cargarPantalla(Screens pantalla) {
